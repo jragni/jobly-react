@@ -1,70 +1,80 @@
-# Getting Started with Create React App
+#Jobly React Components
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# App 
+ - Props : None
+ - State: 
+    - isLoggedIn  // NOTE: token to determine if isLoggedIn
+    - isAuthorized
+    - currentUser
+ - App -> {Nav, Routes}
 
-## Available Scripts
+<!----- TODO: move companyList, Job list to companies, jobs-->
+<!--ProfileDetails and User sound like the same  make change to currentUser-->
+## Routes
+  - Props: {isLoggedIn, isAuthorized, , JobList, ProfileDetails, user}
+  - State: 
+  - Renders: App -> Routes -> { Homepage, LoginForm, SignupForm, Companies, Jobs, ProfileDetails, CompanyJobs} 
 
-In the project directory, you can run:
+## Homepage 
+  -Props: { isLoggedIn, isAuthorized, firstName, isLoggedIn, isAuthorized, firstName}
+  -State:  None
+  -Render: Routes -> Home NOTE:Change made because Nav should not be sibling
 
-### `npm start`
+## Nav
+  -Props: { isLoggedIn, isAuthorized}
+  -Render: App -> Nav
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### SignupForm
+  - Props: {isLoggedIn, isAuthorized}  # NOTE: if logged in -> redirect to Home
+  - State: {formData}  ex: {username, pw, email, fn, ln}
+  - Routes -> SignupForm
+NOTE: trigger statechange --> function that triggers call and update isLoggedIn, isAuthorized
+      -> add functions to props to update state
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### LoginForm 
+  - Props: isLoggedIn
+  - State: {formData } Ex: {username, password}
+  - Routes -> LoginForm
 
-### `npm test`
+### Search
+  - Props: None
+  - State: {formData} Ex: {searchData}
+  - {Companies, Jobs} -> Seach
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### Companies
+  - Props: {isLoggedIn, isAuthorized, }  /// will need to change companyList to a state
+  - State: companyList
+  - Renders: Routes -> Companies -> {CompanyList, Search}
 
-### `npm run build`
+/// consider keeping the companyList 
+##### CompanyList
+  - Props: {companyList}
+  - State: 
+  - Companies -> CompanyList -> Company
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+###### Company 
+ - Props: {company}     # note{{title, description, logo}}
+ - State: None
+ - CompanyList -> Company 
+ 
+### CompanyDetails
+ - Props: {company, companyJobList} --> render information about specific company and reuse joblist
+ - state: None
+ - Routes -> companyJobs -> Job 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### ProfileDetails
+ - Props: {isLoggedIn, isAuthorized, user}  # Note: user like {username, password, firstname, lastname}
+ - State: {formData, isValidPassword}  # Note: formData like {firstName, lastname, email, password}
+ - Routes -> ProfileDetails 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Jobs   
+ - Props: { isLoggedIn, isAuthorized}
+ - State: jobList 
+ - Routes -> Jobs -> {Job, Search}
 
-### `npm run eject`
+#### Job
+ - Props: {job} # NOTE: {title, salary, company equity}
+ - State: {isApplied}
+ - {Company, Jobs} -> Job
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+     // introduce mid card level to jobcard list --> same function as companiesList --> renderCards
