@@ -8,26 +8,31 @@
     - currentUser
  - App -> {Nav, Routes}
 
-<!----- TODO: move companyList, Job list to companies, jobs-->
-<!--ProfileDetails and User sound like the same  make change to currentUser-->
 ## Routes
-  - Props: {isLoggedIn, isAuthorized, , JobList, ProfileDetails, user}
+  - Props: {isLoggedIn, isAuthorized, currentUser}
   - State: 
-  - Renders: App -> Routes -> { Homepage, LoginForm, SignupForm, Companies, Jobs, ProfileDetails, CompanyJobs} 
+  - Renders: App -> Routes -> { Homepage, LoginForm, SignupForm, Companies, Jobs, ProfileDetails, CompanyDetail} 
 
 ## Homepage 
-  -Props: { isLoggedIn, isAuthorized, firstName, isLoggedIn, isAuthorized, firstName}
+  -Props: { isLoggedIn, 
+            isAuthorized,
+            firstName, 
+            isLoggedIn, 
+            isAuthorized, 
+            firstName}
   -State:  None
-  -Render: Routes -> Home NOTE:Change made because Nav should not be sibling
+  -Render: Routes -> Homepage NOTE:Change made because Nav should not be sibling
 
 ## Nav
   -Props: { isLoggedIn, isAuthorized}
   -Render: App -> Nav
 
 ### SignupForm
-  - Props: {isLoggedIn, isAuthorized}  # NOTE: if logged in -> redirect to Home
+  - Props: {isLoggedIn,
+            isAuthorized}  # NOTE: if logged in -> redirect to Homepage
   - State: {formData}  ex: {username, pw, email, fn, ln}
   - Routes -> SignupForm
+
 NOTE: trigger statechange --> function that triggers call and update isLoggedIn, isAuthorized
       -> add functions to props to update state
 
@@ -50,20 +55,20 @@ NOTE: trigger statechange --> function that triggers call and update isLoggedIn,
 ##### CompanyList
   - Props: {companyList}
   - State: 
-  - Companies -> CompanyList -> Company
+  - Companies -> CompanyList -> CompanyCard
 
-###### Company 
+###### CompanyCard
  - Props: {company}     # note{{title, description, logo}}
  - State: None
- - CompanyList -> Company 
+ - CompanyList -> CompanyCard
  
-### CompanyDetails
+### CompanyDetail
  - Props: {company, companyJobList} --> render information about specific company and reuse joblist
  - state: None
- - Routes -> companyJobs -> Job 
+ - Routes -> CompanyDetail -> Job 
 
 ### ProfileDetails
- - Props: {isLoggedIn, isAuthorized, user}  # Note: user like {username, password, firstname, lastname}
+ - Props: {isLoggedIn, isAuthorized, CurrentUser}  # Note: user like {username, password, firstname, lastname}
  - State: {formData, isValidPassword}  # Note: formData like {firstName, lastname, email, password}
  - Routes -> ProfileDetails 
 
@@ -75,6 +80,5 @@ NOTE: trigger statechange --> function that triggers call and update isLoggedIn,
 #### Job
  - Props: {job} # NOTE: {title, salary, company equity}
  - State: {isApplied}
- - {Company, Jobs} -> Job
+ - {CompanyCard, Jobs} -> Job
 
-     // introduce mid card level to jobcard list --> same function as companiesList --> renderCards
