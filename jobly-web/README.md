@@ -11,7 +11,16 @@
 ## Routes
   - Props: {isLoggedIn, isAuthorized, currentUser}
   - State: 
-  - Renders: App -> Routes -> { Homepage, LoginForm, SignupForm, Companies, Jobs, ProfileDetails, CompanyDetail} 
+  - Renders: App -> Routes ->
+    {
+      Homepage,
+      LoginForm,
+      SignupForm,
+      Companies,
+      Jobs,
+      ProfileDetails,
+      CompanyDetail
+     } 
 
 ## Homepage 
   -Props: { isLoggedIn, 
@@ -21,7 +30,7 @@
             isAuthorized, 
             firstName}
   -State:  None
-  -Render: Routes -> Homepage NOTE:Change made because Nav should not be sibling
+  -Render: Routes -> Homepage NOTE:Change made because Nav should not be siblin
 
 ## Nav
   -Props: { isLoggedIn, isAuthorized}
@@ -68,7 +77,8 @@ NOTE: trigger statechange --> function that triggers call and update isLoggedIn,
  - Routes -> CompanyDetail -> Job 
 
 ### ProfileDetails
- - Props: {isLoggedIn, isAuthorized, CurrentUser}  # Note: user like {username, password, firstname, lastname}
+ - Props: {isLoggedIn, isAuthorized, CurrentUser}
+ - # Note: user like {username, password, firstname, lastname}
  - State: {formData, isValidPassword}  # Note: formData like {firstName, lastname, email, password}
  - Routes -> ProfileDetails 
 
