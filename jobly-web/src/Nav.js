@@ -5,6 +5,11 @@ function Nav({ isLoggedIn, currentUser, logout }) {
   function handleLogout() {
     logout();
   }
+
+  //DEV testing
+  currentUser = { username: "Ray" };
+  //End DEV
+
   function renderNotLoggedInNav() {
     return (
       <ul className="navbar-nav ml-auto">
@@ -24,23 +29,23 @@ function Nav({ isLoggedIn, currentUser, logout }) {
 
   function renderLoggedInNav() {
     return (
-      <ul className="navbar-nav ml-auto">
-        <li className="nav-item mr-3">
+      <ul className="navbar-nav ml-auto inline">
+        <li className="nav-item mr-auto">
           <NavLink className="btn mr-sm-2" to="/companies">
             Companies
           </NavLink>
         </li>
-        <li className="nav-item mr-3">
+        <li className="nav-item mr-auto">
           <NavLink className="btn mr-sm-2" to="/jobs">
             Jobs
           </NavLink>
         </li>
-        <li className="nav-item mr-3">
+        <li className="nav-item mr-auto">
           <NavLink className="btn mr-sm-2" to="/profile">
             Profile
           </NavLink>
         </li>
-        <li className="nav-item mr-3">
+        <li className="nav-item mr-auto">
           <NavLink className="btn mr-sm-2" onClick={handleLogout} to="/">
             Log out as {currentUser.username}
           </NavLink>
@@ -48,13 +53,15 @@ function Nav({ isLoggedIn, currentUser, logout }) {
       </ul>
     );
   }
-
+  // used for deployement commented out for dev testing
+  //{isLoggedIn ? renderLoggedInNav() : renderNotLoggedInNav()}
   return (
     <nav className="Nav navbar navbar-light bg-light justify-content-between">
       <NavLink className="navbar-brand" to="/">
         Jobly
       </NavLink>
-      {isLoggedIn ? renderLoggedInNav() : renderNotLoggedInNav()}
+      {renderLoggedInNav()}
+      {renderNotLoggedInNav()}
     </nav>
   );
 }
