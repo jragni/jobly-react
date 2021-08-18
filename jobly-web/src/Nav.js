@@ -8,12 +8,12 @@ function Nav({ isLoggedIn, currentUser, logout }) {
   function renderNotLoggedInNav() {
     return (
       <ul className="navbar-nav ml-auto">
-        <li className="nav-item mr-4">
+        <li className="nav-item mr-2">
           <NavLink className="btn mr-sm-2" to="/login">
             Login
           </NavLink>
         </li>
-        <li className="nav-item mr-4">
+        <li className="nav-item mr-2">
           <NavLink className="btn mr-sm-2" to="/signup">
             Sign Up
           </NavLink>

@@ -14,6 +14,10 @@ function App() {
     setCurrentUser(null);
     // TODO :remove token
   }
+
+  function login() {
+    console.log("logged in");
+  }
   return (
     <div className="App">
       <BrowserRouter>
@@ -22,7 +26,11 @@ function App() {
           currentUser={currentUser}
           isLoggedIn={isLoggedIn}
         />
-        <Routes currentUser={currentUser} isLoggedIn={isLoggedIn} />
+        <Routes
+          login={login}
+          currentUser={currentUser}
+          isLoggedIn={isLoggedIn}
+        />
       </BrowserRouter>
     </div>
   );

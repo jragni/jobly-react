@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 
-function LoginForm() {
-  const { formData, setFormData } = useState({});
+const initialFdata = { username: "", password: "" };
+function LoginForm({ login }) {
+  console.log("LoginForm route reached.");
+  const [formData, setFormData] = useState(initialFdata);
 
+  console.log(formData, initialFdata);
   function handleChange(evt) {
     const { name, value } = evt.target;
     setFormData((fData) => ({
@@ -13,21 +16,41 @@ function LoginForm() {
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    return;
+    console.log("LoginForm submitted");
   }
 
   return (
-    <div className="LoginForm mb-4">
-      <form className="form-inline" onSubmit={handleSubmit}>
+    <form className="LoginForm container" onSubmit={handleSubmit}>
+      <div className="form-group row">
+        <label htmlFor="username" className="col-sm-2 col-form-label">
+          Username:
+        </label>
         <input
-          className="form-control form-control-lg flex-grow-1"
-          id="LoginForm"
-          placeholder="Enter search term..."
+          className="form-control col"
+          type="text"
+          id="username"
+          name="username"
+          placeholder="username"
           onChange={handleChange}
-          value={formData.value}
+          value={formData.username}
         />
-      </form>
-    </div>
+      </div>
+      <div className="form-group row">
+        <label htmlFor="password" className="col-sm-2 col-form-label">
+          Password:
+        </label>
+        <input
+          className="form-control col"
+          type="password"
+          id="password"
+          name="password"
+          placeholder="password"
+          onChange={handleChange}
+          value={formData.password}
+        />
+      </div>
+      <button className="btn btn-sm btn-primary"> Log on </button>
+    </form>
   );
 }
 

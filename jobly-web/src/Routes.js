@@ -8,11 +8,11 @@ import Jobs from "./Jobs";
 import CompanyDetail from "./CompanyDetail";
 import ProfileDetails from "./ProfileDetails";
 
-function Routes({ isLoggedIn, currentUser }) {
+function Routes({ login, isLoggedIn, currentUser }) {
   return (
     <Switch className="Routes">
       <Route exact path="/login">
-        <LoginForm isLoggedIn={isLoggedIn} currentUser={currentUser} />
+        <LoginForm login={login} />
       </Route>
 
       <Route exact path="/profile">
