@@ -1,4 +1,5 @@
 import React from "react";
+import addCommas from "./helper/addCommas";
 
 /** Job
  *
@@ -10,15 +11,18 @@ import React from "react";
  */
 
 function Job({ job }) {
-  const { title, salary, equity } = job;
+  const { title, salary, equity, companyName } = job;
   return (
     <div className="Job card">
       <div className="card-header">
-        <h3> {title} </h3>
+        <h5> {title} </h5>
+        <h6> {companyName}</h6>
       </div>
       <div className="card-body">
-        <p className="card-text">Salary: {salary}</p>
-        <p className="card-text">Equity: {equity}</p>
+        <p className="card-text">
+          Salary: {salary ? addCommas(+salary) : "unpaid"}
+        </p>
+        <p className="card-text">Equity: {equity || "none"}</p>
       </div>
     </div>
   );

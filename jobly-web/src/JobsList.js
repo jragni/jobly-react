@@ -17,8 +17,8 @@ function JobList({ jobsList }) {
     <ul className="Jobslist">
       {jobsList && jobsList.length > 0
         ? jobsList.map((j) => (
-            <li>
-              <Job job={j} />
+            <li key={j.id}>
+              <Job key={j.id} job={j} />
             </li>
           ))
         : "No jobs available at this time."}

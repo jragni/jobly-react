@@ -12,7 +12,8 @@ import JoblyApi from "./api";
  * Routes -> CompanyDetail -> JobsLists
  *
  * Route: "/companies/:company"
- */ function CompanyDetail() {
+ */
+function CompanyDetail() {
   const { company } = useParams();
   const [companyDetails, setCompanyDetails] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -20,21 +21,24 @@ import JoblyApi from "./api";
   useEffect(function fetchCompanyJobsOnMount() {
     async function fetchCompanyDetails() {
       const resp = await JoblyApi.getCompany(company);
+
+      console.log("fetching company", resp);
       setCompanyDetails(resp);
       setIsLoading(false);
     }
     fetchCompanyDetails();
-  }, []);
+  });
 
   if (isLoading) return <i> Loading </i>;
+  if (!companyDetails) return <i> Company not found. </i>;
 
   return (
     <div className="CompanyDetail container">
-      <h1> {companyDetails.title} </h1>
+      <h1> {companyDetails.name} </h1>
       <p>
         <small> {companyDetails.description} </small>
       </p>
-      <JobsList jobList={companyDetails.jobs} />
+      <JobsList jobsList={companyDetails.jobs} />
     </div>
   );
 }

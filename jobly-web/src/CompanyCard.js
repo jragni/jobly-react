@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useParams, NavLink } from "react-router-dom";
+import React from "react";
+import { NavLink } from "react-router-dom";
 
 /** CompanyCard
  *
@@ -11,11 +11,15 @@ import { useParams, NavLink } from "react-router-dom";
 function CompanyCard({ company }) {
   return (
     <div className="companyDetail card">
-      <NavLink path={`/companies/${company}`}>
+      <NavLink to={`/companies/${company.handle}`}>
         <div className="card-body">
           <h5 className="card-title">
-            {company.title}
-            <img src={company.image || ""} alt={company.title} />
+            {company.name}
+            <img
+              className="ml-5 float-right"
+              src={company.logoUrl || ""}
+              alt={company.name}
+            />
           </h5>
           <p>
             <small> {company.description}</small>

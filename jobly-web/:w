@@ -18,7 +18,6 @@ function Companies() {
   const [isLoading, setIsLoading] = useState(true);
 
   async function fetchCompanyList(formData) {
-    if (formData) console.log(formData);
     let res = await JoblyApi.getCompanyList(formData);
     console.log(res);
     setCompanyList(res);
@@ -29,12 +28,11 @@ function Companies() {
     fetchCompanyList();
   }, []);
 
-  async function searchCompanies(formData) {
-    console.log("Companies/searchCompanies-----formData:", formData);
+  function searchCompanies(formData) {
     console.log("Searching for companies");
     setIsLoading(true);
-    await fetchCompanyList({ name: formData.value });
-    console.log("search result completed");
+    fetchCompanyList({ name: formData.value });
+    console.log("search result: ", completed);
   }
 
   if (isLoading === true) return <i> Loading... </i>;

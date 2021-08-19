@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import HomePage from "./Homepage";
 import LoginForm from "./LoginForm";
 import SignupForm from "./SignupForm";
@@ -51,7 +51,7 @@ function Routes({ login, isLoggedIn, currentUser }) {
           </Route>
 
           <Route exact path="/companies">
-            <Companies isLoggedIn={isLoggedIn} />
+            <Companies />
           </Route>
 
           <Route exact path="/jobs">

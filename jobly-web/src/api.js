@@ -31,18 +31,25 @@ class JoblyApi {
 
   // Individual API routes
 
-  /** Get list of companies */
+  /** Get list of companies
+   * @param {Object} data --- pass in title to filter query by title.
+   * */
 
-  static async getCompanyList() {
-    let res = await this.request(`companies`);
+  static async getCompanyList(data) {
+    data = data ? data : {};
+    let res = await this.request(`companies`, data);
     return res.companies;
   }
 
   /** Get details on a company by handle. */
 
   static async getCompany(handle) {
-    let res = await this.request(`companies/${handle}`);
-    return res.company;
+    try {
+      let res = await this.request(`companies/${handle}`);
+      return res.company;
+    } catch (error) {
+      return null;
+    }
   }
 
   /** get details on a job by handle. */
@@ -50,6 +57,12 @@ class JoblyApi {
   static async getJob(handle) {
     let res = await this.request(`jobs/${handle}`);
     return res.job;
+  }
+
+  static async getJobList(data) {
+    data = data ? data : {};
+    let res = await this.request(`jobs`, data);
+    return res.jobs;
   }
 }
 
