@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 function HomePage({ currentUser, isLoggedIn }) {
+  console.log("Made it to homepage");
   return (
     <div className="HomePage">
       <h1> Jobly </h1>

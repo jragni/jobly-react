@@ -8,13 +8,25 @@ import Jobs from "./Jobs";
 import CompanyDetail from "./CompanyDetail";
 import ProfileDetails from "./ProfileDetails";
 
+/** Routes
+ * Props:
+ *  -login   --- function to login username
+ *  -isLoggedIn --- Boolean to determine if usdeer is logged in on client side
+ *  -currentUser --- currentUser information {username, fn, ln, email}
+ * States: None
+ * App -> Routes -> {
+ *                    LoginForm,
+ *                    SignupForm,
+ *                    ProfileDetails,
+ *                    CompanyDetail,
+ *                    Companies,
+ *                    Jobs,
+ *                    HomePage,
+ *                    NotFound
+ *                  }
+ */
 function Routes({ login, isLoggedIn, currentUser }) {
-  // FOR DEV TESTING
-  isLoggedIn = true;
-  // END DEV TESTING
-
-  // TODO: figure out how to reroute to home on 404
-  // implement 404 for a route without a path
+  // Switch out line 43 after dev testing done
   return (
     <Switch className="Routes">
       <Route exact path="/login">
@@ -28,7 +40,7 @@ function Routes({ login, isLoggedIn, currentUser }) {
         <HomePage isLoggedIn={isLoggedIn} currentUser={currentUser} />
       </Route>
 
-      {isLoggedIn ? (
+      {true ? (
         <div className="loggedIn">
           <Route exact path="/profile">
             <ProfileDetails currentUser={currentUser} />
@@ -58,4 +70,5 @@ function Routes({ login, isLoggedIn, currentUser }) {
   );
 }
 
+//
 export default Routes;

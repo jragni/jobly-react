@@ -10,7 +10,7 @@ function App() {
   //TODO: create a function to persist through children (log in)
 
   function logout() {
-    setIsLoggedIn(true);
+    setIsLoggedIn(false);
     setCurrentUser(null);
     // TODO :remove token
   }

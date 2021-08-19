@@ -1,11 +1,15 @@
 import React, { useState } from "react";
+import CompanyCard from "./CompanyCard";
 
 function CompanyList({ companyList }) {
   return (
-    <div className="CompanyList">
-      <h1> FOR DEV --- delete later </h1>
-      <ul></ul>
-    </div>
+    <ul className="CompanyList">
+      {companyList.map((c) => (
+        <li>
+          <CompanyCard company={c} />
+        </li>
+      ))}
+    </ul>
   );
 }
 

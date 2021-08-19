@@ -6,8 +6,6 @@ function Nav({ isLoggedIn, currentUser, logout }) {
     logout();
   }
 
-  //DEV testing
-  currentUser = { username: "Ray" };
   //End DEV
 
   function renderNotLoggedInNav() {
@@ -53,17 +51,15 @@ function Nav({ isLoggedIn, currentUser, logout }) {
       </ul>
     );
   }
-  // used for deployement commented out for dev testing
-  //{isLoggedIn ? renderLoggedInNav() : renderNotLoggedInNav()}
   return (
     <nav className="Nav navbar navbar-light bg-light justify-content-between">
       <NavLink className="navbar-brand" to="/">
         Jobly
       </NavLink>
-      {renderLoggedInNav()}
-      {renderNotLoggedInNav()}
+      {isLoggedIn ? renderLoggedInNav() : renderNotLoggedInNav()}
     </nav>
   );
 }
+//{isLoggedIn ? renderLoggedInNav() : renderNotLoggedInNav()}
 
 export default Nav;

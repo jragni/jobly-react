@@ -1,11 +1,28 @@
 import React from "react";
+import Job from "./Job";
 
-//TODO: add Job
+/** JobList
+ * Lists the job cards
+ *
+ * Props:
+ * -jobList --- job list from api passed from Jobs
+ *
+ * States:
+ * - NONE
+ *
+ * {CompanyDetail, Jobs} -> JobList -> Jobs
+ */
 function JobList({ jobsList }) {
   return (
-    <div className="Jobslist">
-      <h1> JobsList For Dev Teasting </h1>
-    </div>
+    <ul className="Jobslist">
+      {jobsList && jobsList.length > 0
+        ? jobsList.map((j) => (
+            <li>
+              <Job job={j} />
+            </li>
+          ))
+        : "No jobs available at this time."}
+    </ul>
   );
 }
 
