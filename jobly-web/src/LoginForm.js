@@ -1,10 +1,22 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 const initialFdata = { username: "", password: "" };
+/** LoginForm
+ * Form to log user into account
+ *
+ * Props:
+ *  - login -- function to log user in
+ *
+ * State:
+ * - formData --- data containing username, password
+ *
+ * Route -> LoginForm
+ */
 function LoginForm({ login }) {
   console.log("LoginForm route reached.");
   const [formData, setFormData] = useState(initialFdata);
-
+  const history = useHistory();
   console.log(formData, initialFdata);
   function handleChange(evt) {
     const { name, value } = evt.target;
@@ -16,7 +28,9 @@ function LoginForm({ login }) {
 
   function handleSubmit(evt) {
     evt.preventDefault();
+    login(formData);
     console.log("LoginForm submitted");
+    history.push("/");
   }
 
   return (
@@ -33,6 +47,7 @@ function LoginForm({ login }) {
           placeholder="username"
           onChange={handleChange}
           value={formData.username}
+          required
         />
       </div>
       <div className="form-group row">
@@ -47,6 +62,7 @@ function LoginForm({ login }) {
           placeholder="password"
           onChange={handleChange}
           value={formData.password}
+          required
         />
       </div>
       <button className="btn btn-sm btn-primary"> Log on </button>

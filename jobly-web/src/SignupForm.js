@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 const initialFormData = {
   username: "",
@@ -8,17 +9,56 @@ const initialFormData = {
   email: "",
 };
 
-function SignupForm({ initialFormData }) {
+/** SignupForm
+ * Renders form for new users to sign up.
+ *
+ * Props:
+ *  -initialFormData --- default blank form data
+ *  -signup --- function that allows user to sign up and log in.
+ *
+ * States:
+ *
+ * Routes -> SignUpForm
+ */
+function SignupForm({ initialFormData, signup, login }) {
   const [formData, setFormData] = useState(initialFormData);
+  // ---- Work in progress to validate form and throw error
+  const history = useHistory();
 
   function handleChange(evt) {
     const { name, value } = evt.target;
     setFormData((fData) => ({ ...fData, [name]: value }));
   }
 
+  function isFormValid() {
+    // validate password
+    if (
+      formData.username.length >= 1 &&
+      formData.username.length <= 30 &&
+      formData.password.length >= 5 &&
+      formData.password.length <= 20 &&
+      formData.firstName.length >= 1 &&
+      formData.firstName.length <= 30 &&
+      formData.lastName.length >= 1 &&
+      formData.lastName.length <= 30 &&
+      formData.email.split("@").length === 2 &&
+      formData.email.split(".").length >= 2
+    ) {
+      console.log("form is valid: true");
+      return true;
+    } else {
+      console.log("form is valid: false");
+      return false;
+    }
+  }
+
   function handleSubmit(evt) {
     evt.preventDefault();
-    return;
+    if (isFormValid()) {
+      signup(formData);
+      history.push("/");
+      console.log("user sumbitted registration.");
+    }
   }
 
   return (
@@ -35,6 +75,22 @@ function SignupForm({ initialFormData }) {
           placeholder="username"
           onChange={handleChange}
           value={formData.username}
+          required
+        />
+      </div>
+      <div className="form-group row">
+        <label htmlFor="email" className="col-sm-2 col-form-label">
+          Email:
+        </label>
+        <input
+          className="form-control col"
+          type="text"
+          id="email"
+          name="email"
+          placeholder="Enter your email..."
+          onChange={handleChange}
+          value={formData.email}
+          required
         />
       </div>
       <div className="form-group row">
@@ -49,6 +105,7 @@ function SignupForm({ initialFormData }) {
           placeholder="password"
           onChange={handleChange}
           value={formData.password}
+          required
         />
       </div>
       <div className="form-group row">
@@ -77,6 +134,7 @@ function SignupForm({ initialFormData }) {
           placeholder="Enter your last name..."
           onChange={handleChange}
           value={formData.lastName}
+          required
         />
       </div>
       <button className="btn btn-sm btn-primary"> Sign up </button>

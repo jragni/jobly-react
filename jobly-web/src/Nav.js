@@ -60,6 +60,5 @@ function Nav({ isLoggedIn, currentUser, logout }) {
     </nav>
   );
 }
-//{isLoggedIn ? renderLoggedInNav() : renderNotLoggedInNav()}
 
 export default Nav;

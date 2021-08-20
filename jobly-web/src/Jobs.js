@@ -17,7 +17,6 @@ function Jobs() {
   async function fetchJobList(formData) {
     //if (formData) console.log("fetching job list :", formData); // used for Dev
     let res = await JobsApi.getJobList(formData);
-    console.log(res);
     setJobsList(res);
     setIsLoading(false);
   }

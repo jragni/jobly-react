@@ -12,8 +12,12 @@ const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
 class JoblyApi {
   // the token for interactive with the API will be stored here.
   static token;
+  static username;
 
   static async request(endpoint, data = {}, method = "get") {
+    //ADDED FOR DEV
+    console.log("request to server data: ", data, "method: ", method);
+    // end DEV
     console.debug("API Call:", endpoint, data, method);
 
     const url = `${BASE_URL}/${endpoint}`;
@@ -28,8 +32,27 @@ class JoblyApi {
       throw Array.isArray(message) ? message : [message];
     }
   }
-
   // Individual API routes
+
+  //-------------------------------------------------------------Authentication
+
+  static async register(data) {
+    try {
+      let res = await this.request("auth/register", data, "post");
+      console.log("at register in api:", res);
+      return res;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  static async logon(data) {
+    let res = await this.request("auth/token", data, "post");
+    console.log("attemting to log in: ", res);
+    return res;
+  }
+
+  //------------------------------------------------------------------Companies
 
   /** Get list of companies
    * @param {Object} data --- pass in title to filter query by title.
@@ -52,6 +75,10 @@ class JoblyApi {
     }
   }
 
+  // Companies End
+
+  //-----------------------------------------------------------------------Jobs
+
   /** get details on a job by handle. */
 
   static async getJob(handle) {
@@ -64,6 +91,7 @@ class JoblyApi {
     let res = await this.request(`jobs`, data);
     return res.jobs;
   }
+  // Jobs End
 }
 
 // for now, put token ("testuser" / "password" on class)

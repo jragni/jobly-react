@@ -25,7 +25,7 @@ import ProfileDetails from "./ProfileDetails";
  *                    NotFound
  *                  }
  */
-function Routes({ login, isLoggedIn, currentUser }) {
+function Routes({ login, isLoggedIn, signup, currentUser }) {
   // Switch out line 43 after dev testing done
   return (
     <Switch className="Routes">
@@ -34,7 +34,7 @@ function Routes({ login, isLoggedIn, currentUser }) {
       </Route>
 
       <Route exact path="/signup">
-        <SignupForm isLoggedIn={isLoggedIn} />
+        <SignupForm signup={signup} />
       </Route>
       <Route exact path="/">
         <HomePage isLoggedIn={isLoggedIn} currentUser={currentUser} />
