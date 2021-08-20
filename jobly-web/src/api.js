@@ -40,19 +40,20 @@ class JoblyApi {
     try {
       let res = await this.request("auth/register", data, "post");
       console.log("at register in api:", res);
-      this.token = res;
-      return res;
+      this.token = res.token;
+      return this.token;
     } catch (error) {
       console.error(error);
     }
   }
 
-  static async logon(data) {
+  static async login(data) {
     let res = await this.request("auth/token", data, "post");
     console.log("attemting to log in: ", res);
-    this.token = res;
-    return res;
+    this.token = res.token;
+    return this.token;
   }
+  //NOTE: was an object prior (token)
 
   //------------------------------------------------------------------Companies
 
@@ -94,6 +95,15 @@ class JoblyApi {
     return res.jobs;
   }
   // Jobs End
+
+  //----------------------------------------------------------------------Users
+
+  static async getUser(username) {
+    console.log("getUser in api data :", username);
+    let res = await this.request(`users/${username}`, { username: username });
+    this.user = res.user;
+    return res.user;
+  }
 }
 
 // for now, put token ("testuser" / "password" on class)

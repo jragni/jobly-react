@@ -5,12 +5,11 @@ import Routes from "./Routes";
 import { BrowserRouter } from "react-router-dom";
 import JoblyApi from "./api";
 import currentUserContext from "./currentUserContext";
+import jwt from "jwt-decode";
 
 function App() {
-  //const [isLoggedIn, setIsLoggedIn] = useState(false); //used for dev purposes.
   const [currentUser, setCurrentUser] = useState(null);
   const [token, setToken] = useState(null);
-
   function logout() {
     setCurrentUser(null);
     setToken(null);
@@ -18,28 +17,31 @@ function App() {
 
   async function login(data) {
     console.log("logging in...");
-    const resp = await JoblyApi.logon(data);
+    const respToken = await JoblyApi.login(data);
     console.log("logged in");
-    setToken(resp);
-    const { username, password } = data;
+    setToken(respToken);
   }
 
   async function signup(data) {
     console.log("App.js/signup --- user signup initiated.", data);
-    const resp = await JoblyApi.register(data); // returns a token
-    setToken(resp);
-    const { username, password } = data;
+    const respToken = await JoblyApi.register(data); // returns a token
+    setToken(respToken);
   }
 
-  async function handleFetchUser(data) {
-    console.log("Fetching user");
-    const user = await JoblyApi.getUser(data);
+  async function handleFetchUser() {
+    console.log("handleFetchUser");
+    const { username } = jwt(token);
+    console.log("fetch user from token: ", username);
+    const user = await JoblyApi.getUser(username);
+    console.log("user fetched: ", user);
     setCurrentUser(user);
   }
 
   useEffect(
     function fetchCurrentUserLogin() {
+      //console.log("fetchCurrentUserLogin, token: ", token); // for dev
       if (token) {
+        handleFetchUser(currentUser);
       }
     },
     [token]

@@ -1,6 +1,16 @@
 import React from "react";
 import CompanyCard from "./CompanyCard";
 
+/** CompanyList
+ * List of company cards.
+ *
+ * Props:
+ *  -companyList --- List of company cards.
+ *
+ * State: None
+ * company -> CompanyList -> CompanyCard
+ */
+
 function CompanyList({ companyList }) {
   return (
     <ul className="CompanyList">

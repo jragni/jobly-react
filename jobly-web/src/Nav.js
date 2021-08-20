@@ -18,6 +18,7 @@ function Nav({ logout }) {
     logout();
   }
 
+  /** restricts view to show login and signup */
   function renderNotLoggedInNav() {
     console.log("rendering not logged in");
     return (
@@ -36,6 +37,7 @@ function Nav({ logout }) {
     );
   }
 
+  /** Shows view for logged in users. */
   function renderLoggedInNav() {
     console.log("rendering logged in");
     return (
@@ -72,5 +74,4 @@ function Nav({ logout }) {
     </nav>
   );
 }
-
 export default Nav;

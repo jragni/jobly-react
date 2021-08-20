@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import SearchForm from "./SearchForm";
 import JobsList from "./JobsList";
 import JobsApi from "./api";
+
 /** Jobs
  * Renders page for searching jobs and browsing through job list
  *
@@ -14,8 +15,10 @@ function Jobs() {
   const [jobsList, setJobsList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
+  /* fetches joblist from API  and updates list of jobs
+   * @param {object} formData --- {ti}
+   */
   async function fetchJobList(formData) {
-    //if (formData) console.log("fetching job list :", formData); // used for Dev
     let res = await JobsApi.getJobList(formData);
     setJobsList(res);
     setIsLoading(false);
@@ -25,11 +28,13 @@ function Jobs() {
     fetchJobList();
   }, []);
 
+  /** searchJobs
+   * fetches jpbs with matching title.
+   * @param {object} formData --- {title}
+   */
   async function searchJobs(formData) {
-    //console.log("searching for Job. formData: ", formData); // used for Dev
     setIsLoading(true);
     await fetchJobList({ title: formData.value });
-    //console.log("search result completed"); // used for Dev
   }
 
   if (isLoading) return <i> Loading... </i>;
