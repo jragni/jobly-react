@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Switch, Route } from "react-router-dom";
 import HomePage from "./Homepage";
 import LoginForm from "./LoginForm";
@@ -7,11 +7,11 @@ import Companies from "./Companies";
 import Jobs from "./Jobs";
 import CompanyDetail from "./CompanyDetail";
 import ProfileDetails from "./ProfileDetails";
+import currentUserContext from "./currentUserContext";
 
 /** Routes
  * Props:
  *  -login   --- function to login username
- *  -isLoggedIn --- Boolean to determine if usdeer is logged in on client side
  *  -currentUser --- currentUser information {username, fn, ln, email}
  * States: None
  * App -> Routes -> {
@@ -25,8 +25,8 @@ import ProfileDetails from "./ProfileDetails";
  *                    NotFound
  *                  }
  */
-function Routes({ login, isLoggedIn, signup, currentUser }) {
-  // Switch out line 43 after dev testing done
+function Routes({ login, signup }) {
+  const currentUser = useContext(currentUserContext);
   return (
     <Switch className="Routes">
       <Route exact path="/login">
@@ -37,17 +37,17 @@ function Routes({ login, isLoggedIn, signup, currentUser }) {
         <SignupForm signup={signup} />
       </Route>
       <Route exact path="/">
-        <HomePage isLoggedIn={isLoggedIn} currentUser={currentUser} />
+        <HomePage />
       </Route>
 
-      {true ? (
+      {currentUser ? (
         <div className="loggedIn">
           <Route exact path="/profile">
             <ProfileDetails currentUser={currentUser} />
           </Route>
 
           <Route exact path="/companies/:company">
-            <CompanyDetail isLoggedIn={isLoggedIn} />
+            <CompanyDetail />
           </Route>
 
           <Route exact path="/companies">

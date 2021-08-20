@@ -1,14 +1,25 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import currentUserContext from "./currentUserContext";
 
-function Nav({ isLoggedIn, currentUser, logout }) {
+/** Nav
+ *
+ * Props:
+ *  -logout
+ *
+ * State:
+ *
+ * App -> Nav
+ */
+function Nav({ logout }) {
+  const currentUser = useContext(currentUserContext);
+  console.log("current user in nav:", currentUser);
   function handleLogout() {
     logout();
   }
 
-  //End DEV
-
   function renderNotLoggedInNav() {
+    console.log("rendering not logged in");
     return (
       <ul className="navbar-nav ml-auto">
         <li className="nav-item mr-2">
@@ -26,6 +37,7 @@ function Nav({ isLoggedIn, currentUser, logout }) {
   }
 
   function renderLoggedInNav() {
+    console.log("rendering logged in");
     return (
       <ul className="navbar-nav ml-auto inline">
         <li className="nav-item mr-auto">
@@ -56,7 +68,7 @@ function Nav({ isLoggedIn, currentUser, logout }) {
       <NavLink className="navbar-brand" to="/">
         Jobly
       </NavLink>
-      {isLoggedIn ? renderLoggedInNav() : renderNotLoggedInNav()}
+      {currentUser ? renderLoggedInNav() : renderNotLoggedInNav()}
     </nav>
   );
 }

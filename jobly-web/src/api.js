@@ -12,7 +12,7 @@ const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
 class JoblyApi {
   // the token for interactive with the API will be stored here.
   static token;
-  static username;
+  static user;
 
   static async request(endpoint, data = {}, method = "get") {
     //ADDED FOR DEV
@@ -40,6 +40,7 @@ class JoblyApi {
     try {
       let res = await this.request("auth/register", data, "post");
       console.log("at register in api:", res);
+      this.token = res;
       return res;
     } catch (error) {
       console.error(error);
@@ -49,6 +50,7 @@ class JoblyApi {
   static async logon(data) {
     let res = await this.request("auth/token", data, "post");
     console.log("attemting to log in: ", res);
+    this.token = res;
     return res;
   }
 
@@ -95,9 +97,9 @@ class JoblyApi {
 }
 
 // for now, put token ("testuser" / "password" on class)
-JoblyApi.token =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ" +
-  "SI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0." +
-  "FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc";
+//JoblyApi.token =
+//"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ" +
+//"SI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0." +
+//"FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc";
 
 export default JoblyApi;

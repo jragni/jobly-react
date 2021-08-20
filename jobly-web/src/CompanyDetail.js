@@ -28,10 +28,8 @@ function CompanyDetail() {
     }
     fetchCompanyDetails();
   });
-
   if (isLoading) return <i> Loading </i>;
   if (!companyDetails) return <i> Company not found. </i>;
-
   return (
     <div className="CompanyDetail container">
       <h1> {companyDetails.name} </h1>

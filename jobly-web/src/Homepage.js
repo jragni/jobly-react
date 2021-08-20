@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import currentUserContext from "./currentUserContext";
 
-function HomePage({ currentUser, isLoggedIn }) {
+function HomePage() {
+  const currentUser = useContext(currentUserContext);
   console.log("Made it to homepage");
   return (
     <div className="HomePage">
       <h1> Jobly </h1>
       <p> All the jobs in one, convenient place.</p>
-      {isLoggedIn ? (
+      {currentUser ? (
         <h2> Welcome Back, {currentUser.firstName} </h2>
       ) : (
         <div>
