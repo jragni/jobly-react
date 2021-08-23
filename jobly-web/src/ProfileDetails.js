@@ -1,12 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import currentUserContext from "./currentUserContext";
 
-function ProfileDetails({ currentUser }) {
+function ProfileDetails() {
   const [formData, setFormData] = useState({});
-  return (
-    <div className="ProfileDetails">
-      <h1> Profile Details FOR DEV TESTING --- will delete later </h1>
-    </div>
-  );
+  const user = useContext(currentUserContext);
+  return <div className="ProfileDetails"></div>;
 }
 
 export default ProfileDetails;

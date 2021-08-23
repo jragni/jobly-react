@@ -58,9 +58,7 @@ function Routes({ login, signup }) {
             <Jobs />
           </Route>
         </div>
-      ) : (
-        ""
-      )}
+      ) : undefined}
       <Route>
         <div>
           <h1> 404 FOR later</h1>
