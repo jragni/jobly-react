@@ -1,5 +1,5 @@
 import React from "react";
-import addCommas from "./helper/addCommas";
+import addCommas from "../helper/addCommas";
 
 /** Job
  *

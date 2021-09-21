@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import SearchForm from "./SearchForm";
+import SearchForm from "../forms/SearchForm";
 import JobsList from "./JobsList";
-import JobsApi from "./api";
+import JobsApi from "../api/api";
 
 /** Jobs
  * Renders page for searching jobs and browsing through job list

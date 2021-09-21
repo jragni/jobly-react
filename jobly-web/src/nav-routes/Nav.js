@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
-import currentUserContext from "./currentUserContext";
+import currentUserContext from "../context/currentUserContext";
 
 /** Nav
  *

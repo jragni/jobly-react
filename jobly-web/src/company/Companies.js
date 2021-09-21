@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import SearchForm from "./SearchForm";
+import SearchForm from "../forms/SearchForm";
 import CompanyList from "./CompanyList";
-import JoblyApi from "./api";
+import JoblyApi from "../api/api";
 
 /**Companies
  * Renders Companies page with searchbar and list of companies.

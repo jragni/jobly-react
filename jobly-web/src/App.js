@@ -1,10 +1,10 @@
 import "./App.css";
 import React, { useEffect, useState } from "react";
-import Nav from "./Nav";
-import Routes from "./Routes";
+import Nav from "./nav-routes/Nav";
+import Routes from "./nav-routes/Routes";
 import { BrowserRouter } from "react-router-dom";
-import JoblyApi from "./api";
-import currentUserContext from "./currentUserContext";
+import JoblyApi from "./api/api";
+import currentUserContext from "./context/currentUserContext";
 import jwt from "jwt-decode";
 
 function App() {
