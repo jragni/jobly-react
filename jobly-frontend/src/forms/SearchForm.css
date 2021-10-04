@@ -1,0 +1,10 @@
+.SearchForm {
+    padding: auto;
+}
+
+input {
+    border-radius:20px;
+    height: 3rem;
+    width: 33%;
+    padding: auto;
+}
