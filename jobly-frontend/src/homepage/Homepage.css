@@ -1,0 +1,13 @@
+
+.Homepage {
+    min-height: 80vh;
+}
+
+.btn {
+    margin:25px;
+    border-radius:25px;
+}
+
+.jumbotron {
+    margin: 10rem 0;
+}
