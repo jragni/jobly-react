@@ -35,7 +35,7 @@ function Routes() {
         <Jobs/>
       </Route>
 
-      <Route exact path='/jobs'>
+      <Route exact path='/profile'>
         <EditProfileForm />
       </Route>
 

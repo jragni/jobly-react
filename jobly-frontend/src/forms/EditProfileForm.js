@@ -30,10 +30,11 @@ function EditProfileForm({sumbit}) {
             <input 
                 type="text"
                 name="username"
-                id="search-form-input"
-                placeholder="Search..."
+                id="-form-input"
+                placeholder="username"
                 onChange={handleChange}
                 value={formData.username}
+                readOnly
             />
             <button className='btn btn-primary' type="submit">Save Changes</button>
         </form>

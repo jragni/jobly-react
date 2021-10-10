@@ -35,20 +35,22 @@ function Nav(props) {
     return (
       <ul className="navbar-nav me-auto">
         <li className="nav-item">
-          <NavLink to="" className="nav-link">Companies</NavLink>
+          <NavLink to="/companies" className="nav-link">Companies</NavLink>
         </li>
         <li className="nav-item">
-          <NavLink to="" className="nav-link">Jobs</NavLink>
+          <NavLink to="/jobs" className="nav-link">Jobs</NavLink>
         </li>
 
         {/* TODO: Add Profile Link */}
         <li className="nav-item">
-          <NavLink to="" className="nav-link">Profile</NavLink>
+          <NavLink to="/profile" className="nav-link">Profile</NavLink>
         </li>
 
         {/* TODO: Add Logout button */}
         {/* TODO: Add logout w/ template */}
-        <li to="" className="nav-item">Logout as User</li>
+        <li className="nav-item">
+          <NavLink to="/" className="nav-link">Logout as User</NavLink>
+        </li>
       </ul>
     );
   }
@@ -73,7 +75,7 @@ function Nav(props) {
       </div>
       <div className="collapse navbar-collapse">
         {/* TODO: add a logged in view  */}
-        {false ? showLoggedInView() : showLoggedOutView() }
+        {true ? showLoggedInView() : showLoggedOutView() }
       </div>
     </nav>
   );

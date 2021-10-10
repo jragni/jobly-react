@@ -38,7 +38,7 @@ function Homepage() {
         </h1>
         <h4 className="text-muted">All the jobs. One convenient place.</h4>
         {/* TODO: Will add authentication layer after */}
-        {true ? showUserNotLoggedInView() : showUserLoggedInView()}
+        {false ? showUserNotLoggedInView() : showUserLoggedInView()}
       </main>
     </div>
   );
