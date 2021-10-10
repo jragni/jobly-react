@@ -7,9 +7,8 @@ import SearchForm from "../forms/SearchForm";
  * Routes -> Companies -> { CompanyList, SearchForm}
  */
 
-function Companies() {
+function Companies(props) {
   
-
   return (
     <div className="Companies">
       {/* Search Form */}

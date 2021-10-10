@@ -16,13 +16,13 @@ function Nav(props) {
         <ul className="navbar-nav me-auto">
           {/* TODO: Add links to sign up forms when forms completed */}
           <li className="nav-item">
-            <NavLink className="nav-link" to="">
+            <NavLink className="nav-link" to="/signup">
               Sign Up
             </NavLink>
           </li>
 
           <li className="nav-item">
-            <NavLink className="nav-link" to="">
+            <NavLink className="nav-link" to="/login">
               Log In
             </NavLink>
           </li>
