@@ -1,13 +1,6 @@
 import React, {useState} from "react";
-import "./SearchForm.css"
 
-
-function SearchForm({submit,}) {
-
-    // FOR DEV
-    function submit(){};
-    // END DEV
-
+function LoginForm({submit}) {
     const initialState = {search: ""};
     const [formData, setFormData] = useState(initialState);
 
@@ -27,18 +20,26 @@ function SearchForm({submit,}) {
     }
 
     return (
-        <form onSubmit={handleSubmit} className="SearchForm">
+        <form onSubmit={handleSubmit} className="LoginForm">
             <input 
                 type="text"
-                name="search"
-                id="search-form-input"
-                placeholder="Search..."
+                name="username"
+                id="username-form-input"
+                placeholder="Please enter your username..."
                 onChange={handleChange}
-                value={formData.search}
+                value={formData.username}
             />
-            <button className='btn btn-primary' type="submit">Search</button>
+            <input 
+                type="text"
+                name="password"
+                id="password-form-input"
+                placeholder="Please enter your username..."
+                onChange={handleChange}
+                value={formData.password}
+            />
+            <button className='btn btn-primary' type="submit">login</button>
         </form>
     );
 }
 
-export default SearchForm;
+export default LoginForm;
