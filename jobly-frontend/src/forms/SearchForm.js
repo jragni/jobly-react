@@ -2,10 +2,10 @@ import React, {useState} from "react";
 import "./SearchForm.css"
 
 
-function SearchForm({submit,}) {
+function SearchForm({submit}) {
 
+    // TODO: remove once created for both Job search and company search forms
     // FOR DEV
-    function submit(){};
     // END DEV
 
     const initialState = {search: ""};

@@ -23,7 +23,7 @@ function Routes() {
       </Route>
       
       <Route exact path='/companies'>
-        <Companies/>
+        <Companies />
       </Route>
 
       <Route exact path='/companies/:id'>

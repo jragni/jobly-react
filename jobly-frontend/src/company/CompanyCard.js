@@ -20,7 +20,7 @@ import React from "react";
 function CompanyCard({company}) {
     const {handle, name, numEmployees, description, logoUrl} = company;
     return (
-        <div className="CompanyCard card bg-light mb-3 w-75">
+        <div className="CompanyCard card bg-light my-3 w-100">
             <div className="card-header">
                 <h4 className="card-title">
                     {name}
