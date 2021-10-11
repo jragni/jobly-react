@@ -4,18 +4,17 @@ function JobCard({ job, submit}) {
   const { title, salary, equity, companyHandle } = job;
   return (
     <div className="JobsCard">
-      {/* TODO: Add Title  */}
-      {/* company name */}
-      {/* salary */}
-      {/* equity */}
-      {/* APply button */}
       <div className="CompanyCard card bg-light container my-3 w-75">
         <div className="card-header row">
-          <h2 className="card-title text-start col">{title}</h2>
+          <h4 className="card-title text-start col">{title}</h4>
         </div>
         <div className="card-body">
-          <h3 className="card-text text-start">{companyHandle}</h3>
-          <p className="card-text text-start">Salary: ${salary}</p>
+          <h6 className="card-text text-start">{companyHandle}</h6>
+          <p className="card-text text-start">
+            Salary: {salary ? salary :
+            "Not Available"
+              }
+          </p>
           {equity 
           ? <p className="card-text text-start">Equity: {equity}</p>
           : <p className="card-text text-start">Equity: 0</p>}

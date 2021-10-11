@@ -24,7 +24,7 @@ function Routes() {
         <Companies />
       </Route>
 
-      <Route exact path='/companies/:id'>
+      <Route exact path='/companies/:handle'>
         {/* TODO add company card id*/}
         <CompanyDetail/> 
       </Route>

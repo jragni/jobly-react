@@ -5,7 +5,8 @@ import JobCard from "./JobCard";
  * List of job cards 
  * 
  * Props: 
- *      jobs --- List of jobs  
+ *      jobs {Array.object}: List of jobs  
+ *      submit: function to submit apply
  * 
  * State: 
  *       -No State

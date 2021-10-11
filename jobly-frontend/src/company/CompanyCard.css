@@ -1,0 +1,10 @@
+/* CSS for comopany cards */
+
+.CompanyCard:hover {
+    box-shadow: 2px 2px;
+}
+
+.card-link {
+    text-decoration: none;
+    color: inherit;
+}
