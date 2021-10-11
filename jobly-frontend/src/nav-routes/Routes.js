@@ -7,11 +7,9 @@ import EditProfileForm from "../forms/EditProfileForm";
 import SignupForm from "../forms/SignupForm";
 import LoginForm from "../forms/LoginForm";
 import { Route, Switch, Redirect } from "react-router-dom";
-
 /** Routes
  *  Routes for the app
  */
-
 
 /* TODO: add authentication layer */
 function Routes() {

@@ -11,6 +11,8 @@ import "./Nav.css";
 function Nav(props) {
   /* Function that shows navbar features for users that are not lgogged in */
   function showLoggedOutView() {
+    //FOR DEV
+    //END DEV
     return (
       <div>
         <ul className="navbar-nav me-auto">
@@ -49,7 +51,9 @@ function Nav(props) {
         {/* TODO: Add Logout button */}
         {/* TODO: Add logout w/ template */}
         <li className="nav-item">
-          <NavLink to="/" className="nav-link">Logout as User</NavLink>
+          <NavLink to="/logout" className="nav-link">
+            Logout as someonewitharidiculouslylongname 
+          </NavLink>
         </li>
       </ul>
     );

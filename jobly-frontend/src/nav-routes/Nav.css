@@ -2,7 +2,7 @@ li {
     list-style-type: none;
 }
 
-.nav-item, .nav-link {
-    padding: auto;
-    width: 5rem;
+
+.nav-item {
+    width:max-content;
 }

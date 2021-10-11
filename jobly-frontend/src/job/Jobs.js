@@ -24,6 +24,7 @@ function Jobs(props) {
   useEffect(function fetchAllJobsOnMount() {
     async function fetchAllJobs() {
       const res = await JoblyApi.getAllJobs();
+      console.log(res);
       setJobs(res);
       setIsLoading(false);
     }

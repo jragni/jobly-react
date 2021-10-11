@@ -19,7 +19,7 @@ function CompanyList({ companies }) {
   return (
     <div className="CompanyList">
       {companies.map((company) => (
-        <CompanyCard company={company} />
+        <CompanyCard key={company.handle} company={company} />
       ))}
     </div>
   );
