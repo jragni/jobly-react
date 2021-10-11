@@ -44,7 +44,7 @@ function Companies(props) {
   }
 
   return (
-    <div className="Companies container">
+    <div className="Companies container w-75">
       {/* Search Form */}
         <SearchForm submit={submit} />
         {/* Company Lists */}

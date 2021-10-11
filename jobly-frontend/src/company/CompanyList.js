@@ -16,7 +16,7 @@ function CompanyList({ companies }) {
   /** TODO: decide on using context for the props */
 
   return (
-    <div className="CompanyList d-block justify-content-center">
+    <div className="CompanyList">
       {/* Company Cards */}
       {companies.map((company) => (
         <CompanyCard company={company} />
