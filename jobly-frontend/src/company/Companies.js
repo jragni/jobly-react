@@ -12,20 +12,23 @@ import JoblyApi from "../api/api";
  *                              (This is the data from API not the component)
  *
  * State:
+ *  - isLoading {Bool} : Boolean to trigger the loading view
+ *  - companies {Array.Object} : List of companies with information about
+ *                              {name, description, numEmployees, logoUrl...}
+ *  - page {Number} : The page number used for pagination of the company cards 
  *
  * Routes -> Companies -> { CompanyList, SearchForm}
  */
 function Companies(props) {
   let [isLoading, setIsLoading] = useState(true);
   let [companies, setCompanies] = useState([]);
-
+  // Object that contains state and the hook 
   // TODO: add a submit api for search
   /** Submit function for searchbar */
   function submit() {
-    alert("hello submit");
   }
 
-  /* Get company list from api */
+  /* Fetch list of all companies using JoblyApi*/
   useEffect(
     function fetchAllCompaniesWhenMounted() {
       async function fetchAllCompanies() {
@@ -41,9 +44,7 @@ function Companies(props) {
   if (isLoading) return <h1>Loading...</h1>
   return (
     <div className="Companies">
-      {/* Search Form */}
       <SearchForm submit={submit} />
-      {/* Company Lists */}
       <CompanyList companies={companies} />
     </div>
   );

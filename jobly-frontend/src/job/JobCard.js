@@ -11,7 +11,7 @@ function JobCard({ job, submit}) {
         <div className="card-body">
           <h6 className="card-text text-start">{companyHandle}</h6>
           <p className="card-text text-start">
-            Salary: {salary ? salary :
+            Salary: {salary ? "$"+salary :
             "Not Available"
               }
           </p>

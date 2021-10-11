@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useState} from "react";
+import ReactPaginate from "react-paginate";
 import CompanyCard from "./CompanyCard";
 
 /** CompanyList
@@ -8,19 +9,55 @@ import CompanyCard from "./CompanyCard";
  *      -companies --- List of objects containing Company information
  *                     {name, description, handle,...}
  * State:
- *      - No States
+ *      - currentPage {Number} : Number of the current page for pagination
  *
  * Companies -> CompanyList -> CompanyCard
  */
 
 function CompanyList({ companies }) {
-  /** TODO: decide on using context for the props */
+  
+  const [currentPage, setCurrentPage] = useState(0);
+
+  // Pagination for company cards
+  const cardsPerPage =  10;
+  const pageCount = Math.ceil(companies.length / cardsPerPage);
+  // current index of the companies array 
+  const offset = currentPage * cardsPerPage;  
+  const currentPageCards = companies.slice(pageCount, offset + cardsPerPage);
+
+  function handlePageClick({selected:selectedPage}) {
+    setCurrentPage(selectedPage);
+    window.scrollY = 0;
+  }
+
+  //end pagination
 
   return (
     <div className="CompanyList">
-      {companies.map((company) => (
+      {currentPageCards.map((company) => (
         <CompanyCard key={company.handle} company={company} />
       ))}
+      <ReactPaginate
+        forcePage={currentPage}
+        previousLabel={"<"}
+        nextLabel={">"}
+        breakLabel={"..."}
+        breakClassName={"break-me"}
+        pageCount={pageCount}
+        marginPagesDisplayed={2}
+        pageRangeDisplayed={10}
+        onPageChange={handlePageClick}
+        containerClassName={"pagination pagination-md"}
+        activeClassName={"page-item active"}
+        activeLinkClassName={"page-link"}
+        disabledClassName={"page-item disabled"}
+        previousClassName={"page-item"}
+        previousLinkClassName={"page-link"}
+        nextClassName={"page-item"}
+        nextLinkClassName={"page-link"}
+        pageClassName={"page-item"}
+        pageLinkClassName={"page-link"}
+      />
     </div>
   );
 }
