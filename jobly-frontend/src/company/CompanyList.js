@@ -2,6 +2,7 @@ import React from "react";
 import CompanyCard from "./CompanyCard";
 
 /** CompanyList
+ * The list of companies containing company cards
  *
  * Props:
  *      -companies --- List of objects containing Company information
@@ -17,7 +18,6 @@ function CompanyList({ companies }) {
 
   return (
     <div className="CompanyList">
-      {/* Company Cards */}
       {companies.map((company) => (
         <CompanyCard company={company} />
       ))}

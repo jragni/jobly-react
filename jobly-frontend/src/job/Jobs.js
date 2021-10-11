@@ -1,33 +1,42 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import SearchForm from "../forms/SearchForm";
 import JobsList from "../job/JobsList";
+import JoblyApi from "../api/api";
 
 /** Jobs
- * 
+ *
  * Props:
- * 
+ *
  * State:
- * 
+ *
  * Routes -> Jobs -> JobsList
  */
-function Jobs(props){
+function Jobs(props) {
+  const [isLoading, setIsLoading] = useState(true);
+  const [jobs, setJobs] = useState([]);
 
-    //FOR DEV
-    let jobs = [{}]; // TODO: add jobs for test
-    //END DEV
+  // TODO: add api call for submit button;
+  // Handles the submit for searching for jobs
+  function submit() {
+    //API GOES here
+  }
 
-    // TODO: add api call for submit button;
-    // Handles the submit for searching for jobs
-    function submit() {
-        //API GOES here
+  useEffect(function fetchAllJobsOnMount() {
+    async function fetchAllJobs() {
+      const res = await JoblyApi.getAllJobs();
+      setJobs(res);
+      setIsLoading(false);
     }
+    fetchAllJobs();
+  }, []);
 
-    return (
-        <div className="Jobs">
-            <SearchForm submit={submit}/>
-            <JobsList jobs={jobs}/>
-        </div>
-    )
+  if (isLoading) return <h2>Loading</h2>;
+  return (
+    <div className="Jobs">
+      <SearchForm submit={submit} />
+      <JobsList jobs={jobs} />
+    </div>
+  );
 }
 
 export default Jobs;

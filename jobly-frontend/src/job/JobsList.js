@@ -1,10 +1,12 @@
 import React from "react";
+import JobCard from "./JobCard";
 
-function JobsList(props) {
+function JobsList({jobs}) {
     return (
         <div className="JobsList">
-            {/* TODO: add list of jobs */}
-            <h1> TEMPORARY </h1>
+            {jobs.map( job => (
+                <JobCard job={job} />
+            ))}
         </div>
     )
 }
