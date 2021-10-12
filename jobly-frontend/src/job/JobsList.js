@@ -15,10 +15,10 @@ import JobCard from "./JobCard";
  * {Jobs,CompanyDetails} -> JobList -> JobCard
  */
 
-function JobsList({ jobs, submit }) {
+function JobsList({ jobs, search}) {
   const [currentPage, setCurrentPage] = useState(0);
 
-  // Pagination for company cards
+  /* PAGINATION for job cards */
   const cardsPerPage = 10;
   const pageCount = Math.ceil(jobs.length / cardsPerPage);
   // current index of the jobs array
@@ -30,11 +30,11 @@ function JobsList({ jobs, submit }) {
     setCurrentPage(selectedPage);
     window.scrollTo(0, 0);
   }
-  //end pagination
+  /*END pagination */
   return (
     <div className="JobsList">
       {currentPageCards.map((job) => (
-        <JobCard key={job.id} job={job} submit={submit} />
+        <JobCard key={job.id} job={job} search={search} />
       ))}
       <div className='d-flex justify-content-center' > 
         <ReactPaginate

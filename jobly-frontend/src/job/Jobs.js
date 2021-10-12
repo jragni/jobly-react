@@ -15,15 +15,15 @@ function Jobs(props) {
   const [isLoading, setIsLoading] = useState(true);
   const [jobs, setJobs] = useState([]);
 
-  // TODO: add api call for submit button;
-  // Handles the submit for searching for jobs
-  function submit() {
-    //API GOES here
+  /** Handles searching for job by title. Does not have to be exact match */
+  async function search(title) {
+    const res = await JoblyApi.getJobs(title);
+    setJobs(res);
   }
 
   useEffect(function fetchAllJobsOnMount() {
     async function fetchAllJobs() {
-      const res = await JoblyApi.getAllJobs();
+      const res = await JoblyApi.getJobs();
       console.log(res);
       setJobs(res);
       setIsLoading(false);
@@ -34,7 +34,7 @@ function Jobs(props) {
   if (isLoading) return <h2>Loading</h2>;
   return (
     <div className="Jobs">
-      <SearchForm submit={submit} />
+      <SearchForm search={search} />
       <JobsList jobs={jobs} />
     </div>
   );
