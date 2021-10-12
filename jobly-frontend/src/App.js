@@ -5,6 +5,7 @@ import "bootswatch/dist/zephyr/bootstrap.min.css"
 import JoblyApi from './api/api';
 import Routes from "./nav-routes/Routes";
 import Nav from "./nav-routes/Nav"
+import jwt from "jsonwebtoken";
 
 /** App
  * Jobly application. 
@@ -20,8 +21,6 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [token, setToken] = useState(null);
 
-
-  // TODO: add a function to login 
   /* logs user in by requesting a token upon succesful logon*/
   async function login (data) {
     console.debug("App.login",data);
@@ -30,8 +29,19 @@ function App() {
     console.log('authentication successful');
   }
 
+  useEffect( function getUserInfo() {
+    console.debug('getUserInfo', "token", token);
+    if (token) {
+      let userInfo = jwt.decode(token);
+      setCurrentUser(userInfo);
+      console.log("Current User: ", userInfo.username, "has been set." )
+    }
+  }, [token]); 
+
+  
   // TODO: add a function to signup
   // TODO: add a function to update user;
+
   return (
     <div className="App">
       <BrowserRouter>
