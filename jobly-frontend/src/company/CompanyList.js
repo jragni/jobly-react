@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import ReactPaginate from "react-paginate";
 import CompanyCard from "./CompanyCard";
 
@@ -15,21 +15,19 @@ import CompanyCard from "./CompanyCard";
  */
 
 function CompanyList({ companies }) {
-  
   const [currentPage, setCurrentPage] = useState(0);
 
   // Pagination for company cards
-  const cardsPerPage =  10;
+  const cardsPerPage = 10;
   const pageCount = Math.ceil(companies.length / cardsPerPage);
-  // current index of the companies array 
-  const offset = currentPage * cardsPerPage;  
-  const currentPageCards = companies.slice(pageCount, offset + cardsPerPage);
+  // current index of the companies array
+  const offset = currentPage * cardsPerPage;
+  const currentPageCards = companies.slice(offset, offset + cardsPerPage);
 
-  function handlePageClick({selected:selectedPage}) {
+  function handlePageClick({ selected: selectedPage }) {
     setCurrentPage(selectedPage);
-    window.scrollY = 0;
+    window.scrollTo(0, 0);
   }
-
   //end pagination
 
   return (
@@ -38,6 +36,7 @@ function CompanyList({ companies }) {
         <CompanyCard key={company.handle} company={company} />
       ))}
       <ReactPaginate
+        className="mx-auto"
         forcePage={currentPage}
         previousLabel={"<"}
         nextLabel={">"}
