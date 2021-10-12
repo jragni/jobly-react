@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import {useHistory} from "react-router-dom";
 import Alert from "../common/Alert";
 
 /** LoginForm
@@ -15,6 +16,7 @@ function LoginForm({ submit }) {
   const initialState = { username: "" , password: ""};
   const [formData, setFormData] = useState(initialState);
   const [formErrors, setFormErrors] = useState([]);
+  const history = useHistory();
 
   function handleChange(evt) {
     const { name, value } = evt.target;
@@ -28,6 +30,8 @@ function LoginForm({ submit }) {
     evt.preventDefault();
     try {
         await submit(formData);
+        history.push('/');
+        
     } catch (error) {
         setFormErrors(error);
     }
