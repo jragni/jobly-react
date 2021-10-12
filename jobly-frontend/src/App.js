@@ -23,17 +23,21 @@ function App() {
 
   // TODO: add a function to login 
   /* logs user in by requesting a token upon succesful logon*/
-  async function login (username, password) {
-    const token = await JoblyApi.login(username, password);
+  async function login (data) {
+    console.debug("App.login",data);
+    const token = await JoblyApi.login(data);
     setToken(token);
+    console.log('authentication successful');
   }
+
   // TODO: add a function to signup
   // TODO: add a function to update user;
   return (
     <div className="App">
       <BrowserRouter>
         <Nav/>
-        <Routes />
+        {/* TODO: add context instead of prop drilling */}
+        <Routes currentUser={currentUser} login={login} token={token}/>
       </BrowserRouter>
     </div>
   ); 

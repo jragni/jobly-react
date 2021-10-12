@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Alert from "../common/Alert";
 
 /** LoginForm
  * User login page.
@@ -9,27 +10,32 @@ import React, { useState } from "react";
  * State:
  *  - formData {username, password} : required fields
  */
+
 function LoginForm({ submit }) {
-  const initialState = { search: "" };
+  const initialState = { username: "" , password: ""};
   const [formData, setFormData] = useState(initialState);
+  const [formErrors, setFormErrors] = useState([]);
 
   function handleChange(evt) {
     const { name, value } = evt.target;
-    console.log("name: ", name, "value: ", value);
     setFormData((fData) => ({
       ...fData,
       [name]: value,
     }));
   }
 
-  function handleSubmit(evt) {
+  async function handleSubmit(evt) {
     evt.preventDefault();
-    submit(formData);
-    console.log("form sent \n, data: ", formData);
+    try {
+        await submit(formData);
+    } catch (error) {
+        setFormErrors(error);
+    }
+    console.log("login sent \n, data: ", formData);
   }
 
   return (
-    <form onSubmit={handleSubmit} className="LoginForm container w-50">
+    <form onSubmit={handleSubmit} className="LoginForm container w-50" method="post">
       <div className="card form-group my-5 mb-3 bg-secondary">
         <h4 className="card-header text-start">Login</h4>
         <div className="card-body">
@@ -41,6 +47,7 @@ function LoginForm({ submit }) {
             placeholder="username"
             onChange={handleChange}
             value={formData.username}
+            required
           />
           <input
             className='row mx-auto my-2 w-50 form-control'
@@ -50,7 +57,12 @@ function LoginForm({ submit }) {
             placeholder="password"
             onChange={handleChange}
             value={formData.password}
+            required
           />
+                {formErrors.length
+                    ? <Alert type="danger" messages={formErrors} />
+                    : null}
+
           <button className="btn btn-primary" type="submit">
             login
           </button>
@@ -61,18 +73,3 @@ function LoginForm({ submit }) {
 }
 
 export default LoginForm;
-
-{
-  /* <div class="form-group">
-  <label class="form-label mt-4">Floating labels</label>
-  <div class="form-floating mb-3">
-    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-    <label for="floatingInput">Email address</label>
-  </div>
-  <div class="form-floating">
-    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-    <label for="floatingPassword">Password</label>
-  </div>
-</div>
-+/ */
-}

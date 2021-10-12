@@ -42,7 +42,7 @@ function Routes(props) {
       </Route>
 
       <Route exact path='/login'>
-        <LoginForm />
+        <LoginForm submit={props.login}/>
       </Route>
 
     </Switch>
