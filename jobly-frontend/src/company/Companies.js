@@ -15,36 +15,39 @@ import JoblyApi from "../api/api";
  *  - isLoading {Bool} : Boolean to trigger the loading view
  *  - companies {Array.Object} : List of companies with information about
  *                              {name, description, numEmployees, logoUrl...}
- *  - page {Number} : The page number used for pagination of the company cards 
+ *  - page {Number} : The page number used for pagination of the company cards
  *
  * Routes -> Companies -> { CompanyList, SearchForm}
  */
 function Companies(props) {
-  let [isLoading, setIsLoading] = useState(true);
-  let [companies, setCompanies] = useState([]);
-  // Object that contains state and the hook 
+  const [isLoading, setIsLoading] = useState(true);
+  const [companies, setCompanies] = useState([]);
+  const [lastSearch, setLastSearch] = useState("");
+  // Object that contains state and the hook
   // TODO: add a submit api for search
-  /** Submit function for searchbar */
-  function submit() {
+
+  /** Search for names of company */
+  async function search(name) {
+    const resp = await JoblyApi.getCompanies(name);
+    setLastSearch(name);
+    setCompanies(resp);
   }
 
   /* Fetch list of all companies using JoblyApi*/
-  useEffect(
-    function fetchAllCompaniesWhenMounted() {
-      async function fetchAllCompanies() {
-        const resp = await JoblyApi.getAllCompanies();
-        console.log(resp);
-        setCompanies(resp);
-        setIsLoading(false);
-      }
-      fetchAllCompanies();
-    }, []
-  );
+  useEffect(function fetchAllCompaniesWhenMounted() {
+    async function fetchAllCompanies() {
+      const resp = await JoblyApi.getCompanies();
+      console.log(resp);
+      setCompanies(resp);
+      setIsLoading(false);
+    }
+    fetchAllCompanies();
+  }, []);
 
-  if (isLoading) return <h1>Loading...</h1>
+  if (isLoading) return <h1>Loading...</h1>;
   return (
     <div className="Companies">
-      <SearchForm submit={submit} />
+      <SearchForm lastSearch={lastSearch} search={search} />
       <CompanyList companies={companies} />
     </div>
   );

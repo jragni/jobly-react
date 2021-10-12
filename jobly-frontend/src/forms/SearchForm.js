@@ -2,14 +2,9 @@ import React, {useState} from "react";
 import "./SearchForm.css"
 
 
-function SearchForm({submit}) {
+function SearchForm({search, lastSearch}) {
 
-    // TODO: remove once created for both Job search and company search forms
-    // FOR DEV
-    // END DEV
-
-    const initialState = {search: ""};
-    const [formData, setFormData] = useState(initialState);
+    const [formData, setFormData] = useState({search:lastSearch});
 
     function handleChange(evt){
         const {name, value} = evt.target;
@@ -20,9 +15,10 @@ function SearchForm({submit}) {
         }));
     }
 
-    function handleSubmit(evt) {
-        evt.preventDefault();
-        submit(formData);
+    function handleSubmit(e) {
+        e.preventDefault();
+        let searchTerm = formData.search.trim() || undefined;
+        search(searchTerm);
         console.log("form sent \n, data: ", formData);
     }
 

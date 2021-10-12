@@ -17,7 +17,7 @@ import CompanyCard from "./CompanyCard";
 function CompanyList({ companies }) {
   const [currentPage, setCurrentPage] = useState(0);
 
-  // Pagination for company cards
+  /* Pagination for company cards */
   const cardsPerPage = 10;
   const pageCount = Math.ceil(companies.length / cardsPerPage);
   // current index of the companies array
@@ -28,7 +28,7 @@ function CompanyList({ companies }) {
     setCurrentPage(selectedPage);
     window.scrollTo(0, 0);
   }
-  //end pagination
+  /* END Pagination */
 
   return (
     <div className="CompanyList">
