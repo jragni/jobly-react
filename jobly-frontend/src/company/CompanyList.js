@@ -35,28 +35,30 @@ function CompanyList({ companies }) {
       {currentPageCards.map((company) => (
         <CompanyCard key={company.handle} company={company} />
       ))}
-      <ReactPaginate
-        className="mx-auto"
-        forcePage={currentPage}
-        previousLabel={"<"}
-        nextLabel={">"}
-        breakLabel={"..."}
-        breakClassName={"break-me"}
-        pageCount={pageCount}
-        marginPagesDisplayed={2}
-        pageRangeDisplayed={10}
-        onPageChange={handlePageClick}
-        containerClassName={"pagination pagination-md"}
-        activeClassName={"page-item active"}
-        activeLinkClassName={"page-link"}
-        disabledClassName={"page-item disabled"}
-        previousClassName={"page-item"}
-        previousLinkClassName={"page-link"}
-        nextClassName={"page-item"}
-        nextLinkClassName={"page-link"}
-        pageClassName={"page-item"}
-        pageLinkClassName={"page-link"}
-      />
+      <div className="d-flex justify-content-center">
+        <ReactPaginate
+          className="mx-auto"
+          forcePage={currentPage}
+          previousLabel={"<"}
+          nextLabel={">"}
+          breakLabel={"..."}
+          breakClassName={"break-me"}
+          pageCount={pageCount}
+          marginPagesDisplayed={2}
+          pageRangeDisplayed={10}
+          onPageChange={handlePageClick}
+          containerClassName={"pagination pagination-md"}
+          activeClassName={"page-item active"}
+          activeLinkClassName={"page-link"}
+          disabledClassName={"page-item disabled"}
+          previousClassName={"page-item"}
+          previousLinkClassName={"page-link"}
+          nextClassName={"page-item"}
+          nextLinkClassName={"page-link"}
+          pageClassName={"page-item"}
+          pageLinkClassName={"page-link"}
+        />
+      </div>
     </div>
   );
 }
