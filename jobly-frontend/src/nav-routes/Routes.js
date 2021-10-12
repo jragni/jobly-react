@@ -12,7 +12,7 @@ import { Route, Switch, Redirect } from "react-router-dom";
  */
 
 /* TODO: add authentication layer */
-function Routes() {
+function Routes(props) {
   return (
     <Switch>
 

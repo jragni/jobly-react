@@ -7,7 +7,6 @@ import "./Nav.css";
  * Navigation Bar for Jobly App.
  */
 
-// TODO: ADD links for NavLinks
 function Nav(props) {
   /* Function that shows navbar features for users that are not lgogged in */
   function showLoggedOutView() {
@@ -16,7 +15,6 @@ function Nav(props) {
     return (
       <div>
         <ul className="navbar-nav me-auto">
-          {/* TODO: Add links to sign up forms when forms completed */}
           <li className="nav-item">
             <NavLink className="nav-link" to="/signup">
               Sign Up
@@ -37,22 +35,27 @@ function Nav(props) {
     return (
       <ul className="navbar-nav me-auto">
         <li className="nav-item">
-          <NavLink to="/companies" className="nav-link">Companies</NavLink>
+          <NavLink to="/companies" className="nav-link">
+            Companies
+          </NavLink>
         </li>
         <li className="nav-item">
-          <NavLink to="/jobs" className="nav-link">Jobs</NavLink>
+          <NavLink to="/jobs" className="nav-link">
+            Jobs
+          </NavLink>
         </li>
 
-        {/* TODO: Add Profile Link */}
         <li className="nav-item">
-          <NavLink to="/profile" className="nav-link">Profile</NavLink>
+          <NavLink to="/profile" className="nav-link">
+            Profile
+          </NavLink>
         </li>
 
         {/* TODO: Add Logout button */}
         {/* TODO: Add logout w/ template */}
         <li className="nav-item">
           <NavLink to="/logout" className="nav-link">
-            Logout as someonewitharidiculouslylongname 
+            Logout as someonewitharidiculouslylongname
           </NavLink>
         </li>
       </ul>
@@ -79,7 +82,7 @@ function Nav(props) {
       </div>
       <div className="collapse navbar-collapse">
         {/* TODO: add a logged in view  */}
-        {true ? showLoggedInView() : showLoggedOutView() }
+        {false ? showLoggedInView() : showLoggedOutView()}
       </div>
     </nav>
   );

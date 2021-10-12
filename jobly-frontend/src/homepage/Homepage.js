@@ -11,11 +11,11 @@ import { Link } from "react-router-dom";
 function Homepage() {
   function showUserNotLoggedInView() {
     return (
-      <div className="btn-group">
-        <Link className="btn btn-primary" to="/signup">
+      <div className="btn-group ">
+        <Link className="btn btn-primary mx-2" to="/signup">
           Sign Up
         </Link>
-        <Link className="btn btn-secondary" to="/login">
+        <Link className="btn btn-danger mx-2" to="/login">
           Log In
         </Link>
       </div>
@@ -38,7 +38,7 @@ function Homepage() {
         </h1>
         <h4 className="text-muted">All the jobs. One convenient place.</h4>
         {/* TODO: Will add authentication layer after */}
-        {false ? showUserNotLoggedInView() : showUserLoggedInView()}
+        {true ? showUserNotLoggedInView() : showUserLoggedInView()}
       </main>
     </div>
   );

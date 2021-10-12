@@ -23,8 +23,6 @@ function Companies(props) {
   const [isLoading, setIsLoading] = useState(true);
   const [companies, setCompanies] = useState([]);
   const [lastSearch, setLastSearch] = useState("");
-  // Object that contains state and the hook
-  // TODO: add a submit api for search
 
   /** Search for names of company */
   async function search(name) {
