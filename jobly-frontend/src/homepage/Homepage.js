@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useContext} from "react";
+import UserContext from "../context/UserContext";
 import "./Homepage.css";
 import { Link } from "react-router-dom";
 
@@ -7,8 +8,9 @@ import { Link } from "react-router-dom";
  * not authenticated. If authenticated, the user can view companies, jobs, their profile,
  * or logout.
  */
-
 function Homepage() {
+
+  const currentUser = useContext(UserContext);
   function showUserNotLoggedInView() {
     return (
       <div className="btn-group ">
@@ -30,6 +32,7 @@ function Homepage() {
     );
   }
 
+  // TODO: add a better intro landing page
   return (
     <div className="Homepage container">
       <main className="jumbotron start-50 top-50">
@@ -37,8 +40,7 @@ function Homepage() {
           <strong>Jobly</strong>
         </h1>
         <h4 className="text-muted">All the jobs. One convenient place.</h4>
-        {/* TODO: Will add authentication layer after */}
-        {true ? showUserNotLoggedInView() : showUserLoggedInView()}
+        { currentUser ? showUserLoggedInView() : showUserNotLoggedInView()}
       </main>
     </div>
   );
