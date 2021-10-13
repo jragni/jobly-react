@@ -4,7 +4,7 @@ function JobCard({ job, submit}) {
   const { title, salary, equity, companyHandle } = job;
   return (
     <div className="JobsCard">
-      <div className="CompanyCard card bg-light container my-3 w-75">
+      <div className="card bg-light container my-3 w-75">
         <div className="card-header row">
           <h4 className="card-title text-start col">{title}</h4>
         </div>
