@@ -50,6 +50,7 @@ function Routes(props) {
         <Route exact path="/profile">
           <EditProfileForm />
         </Route>
+        
       </div>
     );
   }

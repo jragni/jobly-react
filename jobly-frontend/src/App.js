@@ -31,6 +31,11 @@ function App() {
     console.log("authentication successful");
   }
 
+  function logout() {
+    JoblyApi.token = null;
+    setCurrentUser(null);
+  }
+
   useEffect(
     function getUserInfo() {
       console.debug("getUserInfo", "token", token);
@@ -46,6 +51,7 @@ function App() {
   async function register(data) {
     const token = await JoblyApi.register(data);    
     JoblyApi.token = token;
+    console.log('Registration succesful!');
     setToken(token);
   }
 
@@ -54,7 +60,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <UserContext.Provider value={currentUser}>
-          <Nav />
+          <Nav logout={logout}/>
           <Routes register={register} login={login} />
         </UserContext.Provider>
       </BrowserRouter>

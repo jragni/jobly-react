@@ -3,12 +3,20 @@ import UserContext from "../context/UserContext";
 import { NavLink } from "react-router-dom";
 import "./Nav.css";
 
-/**
- * Nav
- * Navigation Bar for Jobly App.
+/**  Nav
+ * Navigation Bar for Jobly App. When user is logged in, the user can access
+ * the Companies, Jobs, and Profile routes via links on the navigation bar.
+ * If the user is not logged in, the user will only see the Log In and Sign Up
+ * options.
+ * 
+ *  Props:
+ *  - logout : function that logs user out 
+ * 
+ *  State: 
+ *        No states
  */
 
-function Nav(props) {
+function Nav({logout}) {
 
   const currentUser = useContext(UserContext);
 
@@ -53,10 +61,8 @@ function Nav(props) {
           </NavLink>
         </li>
 
-        {/* TODO: Add Logout button */}
-        {/* TODO: Add logout w/ template */}
         <li className="nav-item">
-          <NavLink to="/logout" className="nav-link">
+          <NavLink onClick={logout} to="/logout" className="nav-link">
             Logout as {currentUser.username} 
           </NavLink>
         </li>
