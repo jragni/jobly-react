@@ -23,7 +23,7 @@ function EditProfileForm({sumbit}) {
         submit(formData);
         console.log("form sent \n, data: ", formData);
     }
-
+// TODO: FORMAT into card form
     return (
         <form onSubmit={handleSubmit} className="EditProfileForm">
             {/* TODO: add other fields  */}

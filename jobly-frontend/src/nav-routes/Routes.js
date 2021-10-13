@@ -15,6 +15,29 @@ import UserContext from "../context/UserContext";
 
 function Routes(props) {
   const currentUser = useContext(UserContext);
+
+  function getLoggedInRoutes() {
+    return (
+      <div className="isLoggedIn">
+        <Route exact path="/companies">
+          <Companies />
+        </Route>
+
+        <Route exact path="/companies/:handle">
+          <CompanyDetail />
+        </Route>
+
+        <Route exact path="/jobs">
+          <Jobs />
+        </Route>
+
+        <Route exact path="/profile">
+          <EditProfileForm />
+        </Route>
+      </div>
+    );
+  }
+
   return (
     <Switch>
       <Route exact path="/">
@@ -22,31 +45,14 @@ function Routes(props) {
       </Route>
 
       <Route exact path="/signup">
-        <SignupForm />
+        <SignupForm register={props.register} />
       </Route>
 
       <Route exact path="/login">
         <LoginForm submit={props.login} />
       </Route>
 
-      {!currentUser ? <Redirect to="/" /> : ""}
-
-      <Route exact path="/companies">
-        <Companies />
-      </Route>
-
-      <Route exact path="/companies/:handle">
-        <CompanyDetail />
-      </Route>
-
-      <Route exact path="/jobs">
-        <Jobs />
-      </Route>
-
-      <Route exact path="/profile">
-        <EditProfileForm />
-      </Route>
-
+      {!currentUser ? <Redirect to="/" /> : getLoggedInRoutes()}
     </Switch>
   );
 }

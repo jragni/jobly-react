@@ -53,10 +53,17 @@ class JoblyApi {
     return res.jobs;
   }
 
+  /** Log in given data: {username, password} */
   static async login(data){
-    console.log("LOGIN api, DATA: ", data);
     let res = await this.request('auth/token', data, 'post');
     return res.token;
+  }
+
+  /** Function to sign user up given data: {username, email, password, } */
+  static async register(data) {
+    let res = await this.request('auth/register', data, 'post');
+    return res.token;
+  
   }
 
 }

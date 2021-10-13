@@ -26,6 +26,7 @@ function App() {
   async function login(data) {
     console.debug("App.login", data);
     const token = await JoblyApi.login(data);
+    JoblyApi.token = token;
     setToken(token);
     console.log("authentication successful");
   }
@@ -42,15 +43,19 @@ function App() {
     [token]
   );
 
-  // TODO: add a function to signup
-  // TODO: add a function to update user;
+  async function register(data) {
+    const token = await JoblyApi.register(data);    
+    JoblyApi.token = token;
+    setToken(token);
+  }
 
+  // TODO: add a function to update user;
   return (
     <div className="App">
       <BrowserRouter>
         <UserContext.Provider value={currentUser}>
           <Nav />
-          <Routes login={login} />
+          <Routes register={register} login={login} />
         </UserContext.Provider>
       </BrowserRouter>
     </div>
