@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useContext} from "react";
+import UserContext from "../context/UserContext";
 import { NavLink } from "react-router-dom";
 import "./Nav.css";
 
@@ -8,10 +9,11 @@ import "./Nav.css";
  */
 
 function Nav(props) {
+
+  const currentUser = useContext(UserContext);
+
   /* Function that shows navbar features for users that are not lgogged in */
   function showLoggedOutView() {
-    //FOR DEV
-    //END DEV
     return (
       <div>
         <ul className="navbar-nav me-auto">
@@ -55,7 +57,7 @@ function Nav(props) {
         {/* TODO: Add logout w/ template */}
         <li className="nav-item">
           <NavLink to="/logout" className="nav-link">
-            Logout as someonewitharidiculouslylongname
+            Logout as {currentUser.username} 
           </NavLink>
         </li>
       </ul>
@@ -82,7 +84,7 @@ function Nav(props) {
       </div>
       <div className="collapse navbar-collapse">
         {/* TODO: add a logged in view  */}
-        {false ? showLoggedInView() : showLoggedOutView()}
+        {currentUser ? showLoggedInView() : showLoggedOutView()}
       </div>
     </nav>
   );

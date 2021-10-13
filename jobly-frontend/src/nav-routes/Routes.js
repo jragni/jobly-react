@@ -25,7 +25,6 @@ function Routes(props) {
       </Route>
 
       <Route exact path='/companies/:handle'>
-        {/* TODO add company card id*/}
         <CompanyDetail/> 
       </Route>
 
