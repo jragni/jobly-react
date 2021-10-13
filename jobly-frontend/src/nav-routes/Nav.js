@@ -61,6 +61,7 @@ function Nav({logout}) {
           </NavLink>
         </li>
 
+        {/* TODO: Add logout w/ template */}
         <li className="nav-item">
           <NavLink onClick={logout} to="/logout" className="nav-link">
             Logout as {currentUser.username} 

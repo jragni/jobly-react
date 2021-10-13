@@ -27,7 +27,7 @@ function Homepage() {
   function showUserLoggedInView() {
     return (
       <div className="isLoggedIn">
-        <h1>Welcome, user</h1>
+        <h1>Welcome, {currentUser.username}</h1>
       </div>
     );
   }
