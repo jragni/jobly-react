@@ -1,6 +1,18 @@
 import React, { useState, useContext } from "react";
-import UserContext from "../context/UserContext";
 import Alert from "../common/Alert";
+
+/** SignupForm
+ * Component that allows users to register a new account
+ * 
+ * Props:
+ *  - register: function that makes a post request to create a new account  
+ * 
+ * State: 
+ *  - formData: form data with {username, password, firstName, lastName, email}
+ *  - formError: messages for corrective action upon invalid data submission
+ * 
+ * Routes -> SignupForm
+ */
 
 function SignupForm({ register }) {
   const initialState = { search: "" };

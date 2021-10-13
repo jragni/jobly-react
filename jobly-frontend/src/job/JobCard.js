@@ -19,7 +19,7 @@ function JobCard({ job, submit}) {
           ? <p className="card-text text-start">Equity: {equity}</p>
           : <p className="card-text text-start">Equity: 0</p>}
           {/* TODO: handle button submit*/}
-          <button className='btn btn-md btn-warning my-0'> Apply</button>
+          <button className='btn btn-md btn-danger my-0'> Apply</button>
         </div>
       </div>
     </div>
