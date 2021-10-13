@@ -11,12 +11,28 @@ import UserContext from "../context/UserContext";
 
 /** Routes
  *  Routes for the app
+ *
+ * Props:
+ *      - login : function for user to log in.
+ *      - register : function for user to register.
+ * State:
+ *      No states
+ *
+ *  App -> Routes -> { Companies, 
+ *                     Jobs, 
+ *                     CompanyDetail, 
+ *                     Profile, 
+ *                     Login, 
+ *                     SignUp,
+ *                     Homepage
+ *                   }
  */
 
 function Routes(props) {
   const currentUser = useContext(UserContext);
 
-  function getLoggedInRoutes() {
+  /* Function that gives access to routes for logged in users */
+  function showLoggedInRoutes() {
     return (
       <div className="isLoggedIn">
         <Route exact path="/companies">
@@ -52,7 +68,7 @@ function Routes(props) {
         <LoginForm submit={props.login} />
       </Route>
 
-      {!currentUser ? <Redirect to="/" /> : getLoggedInRoutes()}
+      {!currentUser ? <Redirect to="/" /> : showLoggedInRoutes()}
     </Switch>
   );
 }

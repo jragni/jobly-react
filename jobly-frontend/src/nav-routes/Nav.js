@@ -83,7 +83,6 @@ function Nav(props) {
         </button>
       </div>
       <div className="collapse navbar-collapse">
-        {/* TODO: add a logged in view  */}
         {currentUser ? showLoggedInView() : showLoggedOutView()}
       </div>
     </nav>
