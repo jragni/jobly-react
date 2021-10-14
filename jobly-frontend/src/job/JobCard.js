@@ -16,6 +16,7 @@ function JobCard({ job }) {
   const { id, title, salary, equity, companyHandle } = job;
   const { currentUser, applyToJob } = useContext(UserContext);
 
+  /** TODO: add a way to click on button and not refresh page */
   async function apply(e) {
     if (currentUser.applications.includes(id)) return;
     await applyToJob(id);

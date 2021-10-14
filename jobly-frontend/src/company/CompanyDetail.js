@@ -27,7 +27,7 @@ function CompanyDetail(props) {
       setIsLoading(false);
     }
     getCompanyJobList();
-  });
+  }, []);
   if (isLoading) return <h1>Loading...</h1>;
   return (
     <div className="CompanyDetail">

@@ -29,7 +29,7 @@ import UserContext from "../context/UserContext";
  */
 
 function Routes(props) {
-  const currentUser = useContext(UserContext);
+  const {currentUser} = useContext(UserContext);
 
   /* Function that gives access to routes for logged in users */
   function showLoggedInRoutes() {

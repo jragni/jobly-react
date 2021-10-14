@@ -21,7 +21,7 @@ import JoblyApi from "../api/api";
  */
 function Companies(props) {
   const [isLoading, setIsLoading] = useState(true);
-  const [companies, setCompanies] = useState([]);
+  const [companies, setCompanies] = useState(null);
   const [lastSearch, setLastSearch] = useState("");
 
   /** Search for names of company */
