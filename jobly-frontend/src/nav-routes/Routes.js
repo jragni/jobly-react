@@ -48,7 +48,7 @@ function Routes(props) {
         </Route>
 
         <Route exact path="/profile">
-          <EditProfileForm />
+          <EditProfileForm update={props.update}/>
         </Route>
         
       </div>

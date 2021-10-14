@@ -22,6 +22,8 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [token, setToken] = useState(null);
 
+  // TODO: add localStorage in order to persist the log in. 
+
   /* logs user in by requesting a token upon succesful logon*/
   async function login(data) {
     console.debug("App.login", data);
@@ -31,23 +33,37 @@ function App() {
     console.log("authentication successful");
   }
 
+  /* Logs user out by clearing the token and current user */
   function logout() {
     JoblyApi.token = null;
     setCurrentUser(null);
   }
 
-  useEffect(
-    function getUserInfo() {
-      console.debug("getUserInfo", "token", token);
+  /** getUserInfo
+   * Effect that fetches the user's information upon token receipt from 
+   *  sign in or registration. 
+   */
+  useEffect( function getUserInfo() {
+    async function fetchUserInfoByUsername(username) {
+        let user = await JoblyApi.getUserInfo(username);
+        console.log(user);
+        setCurrentUser(user);
+    }
       if (token) {
-        let userInfo = jwt.decode(token);
-        setCurrentUser(userInfo);
-        console.log("Current User: ", userInfo.username, "has been set.");
+        let load = jwt.decode(token);
+        console.log("load: ",load);
+        fetchUserInfoByUsername(load.username);
       }
     },
     [token]
   );
 
+  /** register
+   * A function that registers a new user.
+   * 
+   * @param data {object} : user information containing 
+   *                        {username, password, firstName, lastName, email}
+   */
   async function register(data) {
     const token = await JoblyApi.register(data);    
     JoblyApi.token = token;
@@ -55,13 +71,20 @@ function App() {
     setToken(token);
   }
 
-  // TODO: add a function to update user;
+  /** Function that updates the current user's information */
+  async function update(data) {
+    console.debug("Update");
+    const user = await JoblyApi.updateUserInfo(currentUser.username, data);
+    setCurrentUser(user);
+    
+  }
+
   return (
     <div className="App">
       <BrowserRouter>
         <UserContext.Provider value={currentUser}>
           <Nav logout={logout}/>
-          <Routes register={register} login={login} />
+          <Routes register={register} login={login} update={update} />
         </UserContext.Provider>
       </BrowserRouter>
     </div>

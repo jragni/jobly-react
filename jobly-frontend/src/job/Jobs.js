@@ -4,7 +4,9 @@ import JobsList from "../job/JobsList";
 import JoblyApi from "../api/api";
 
 /** Jobs
+ * Component for rendering the Jobs page.
  *
+ * 
  * Props:
  *
  * State:
