@@ -34,7 +34,7 @@ function Homepage() {
 
   // TODO: add a better intro landing page
   return (
-    <div className="Homepage container">
+    <div className="Homepage">
       <main className="jumbotron start-50 top-50">
         <h1>
           <strong>Jobly</strong>
