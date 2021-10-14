@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter } from "react-router-dom";
 import "./App.css";
-import "bootswatch/dist/zephyr/bootstrap.min.css";
+import "bootswatch/dist/lux/bootstrap.min.css";
 import JoblyApi from "./api/api";
 import Routes from "./nav-routes/Routes";
 import Nav from "./nav-routes/Nav";
@@ -50,6 +50,7 @@ function App() {
         let user = await JoblyApi.getUserInfo(username);
         console.log("fetched user:", user);
         setCurrentUser(user);
+        
       }
       if (token) {
         let load = jwt.decode(token);
@@ -91,15 +92,15 @@ function App() {
   }
 
   async function applyToJob(id) {
-    await JoblyApi.apply(currentUser.username, id);
-    console.log('applied to job: ', id);
+    let jobId = await JoblyApi.apply(currentUser.username, id);
+    console.log('applied to job: ', jobId);
   }
 
 
   return (
     <div className="App">
       <BrowserRouter>
-        <UserContext.Provider value={{currentUser, applyToJob}}>
+        <UserContext.Provider value={{currentUser, applyToJob, }}>
           <Nav logout={logout} />
           <Routes register={register} login={login} update={update} />
         </UserContext.Provider>

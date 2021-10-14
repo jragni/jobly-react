@@ -6,7 +6,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  background-image: url('Jobly.jpg');
+  background-image: url('Jobly.jpeg');
   background-repeat: no-repeat;
   background-size:cover;
 }

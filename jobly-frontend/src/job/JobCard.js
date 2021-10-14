@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import UserContext from "../context/UserContext";
 
 /**JobCard
@@ -15,11 +15,14 @@ import UserContext from "../context/UserContext";
 function JobCard({ job }) {
   const { id, title, salary, equity, companyHandle } = job;
   const { currentUser, applyToJob } = useContext(UserContext);
+  const [application, setApplication] = useState(currentUser.applications);
 
   /** TODO: add a way to click on button and not refresh page */
   async function apply(e) {
-    if (currentUser.applications.includes(id)) return;
-    await applyToJob(id);
+    e.preventDefault();
+    if (application.includes(id)) return;
+    applyToJob(id);
+    setApplication( a => [...a, id]);
   }
 
   return (
@@ -40,7 +43,7 @@ function JobCard({ job }) {
           )}
 
           <form onSubmit={apply}>
-            {currentUser && currentUser.applications.includes(id) ? (
+            {currentUser && application.includes(id) ? (
               <button
                 type="submit"
                 className="btn btn-md btn-danger my-0"

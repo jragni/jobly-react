@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect} from "react";
 import SearchForm from "../forms/SearchForm";
-import UserContext from "../context/UserContext";
 import JobsList from "../job/JobsList";
 import JoblyApi from "../api/api";
 
