@@ -15,7 +15,7 @@ import UserContext from "../context/UserContext";
  * Routes -> EditProfileForm
  */
 function EditProfileForm({ update }) {
-  const currentUser = useContext(UserContext);
+  const {currentUser} = useContext(UserContext);
   const [formData, setFormData] = useState(currentUser);
   const [formErrors, setFormErrors] = useState([]);
   const [isUpdated, setIsUpdated] = useState(false);

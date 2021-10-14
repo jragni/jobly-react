@@ -26,9 +26,13 @@ function Companies(props) {
 
   /** Search for names of company */
   async function search(name) {
+    try {
     const resp = await JoblyApi.getCompanies(name);
-    setLastSearch(name);
-    setCompanies(resp);
+      setLastSearch(name);
+      setCompanies(resp);
+    } catch(error) {
+      console.log(error);
+    }
   }
 
   /* Fetch list of all companies using JoblyApi*/

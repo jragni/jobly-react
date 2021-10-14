@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import SearchForm from "../forms/SearchForm";
+import UserContext from "../context/UserContext";
 import JobsList from "../job/JobsList";
 import JoblyApi from "../api/api";
 
@@ -10,7 +11,9 @@ import JoblyApi from "../api/api";
  * Props:
  *
  * State:
- *
+ *  - isLoading: a boolean to check if promises have been fulfilled.
+ *  - jobs: a list of jobs with {title, description, salary, equity}
+ * 
  * Routes -> Jobs -> JobsList
  */
 function Jobs(props) {
@@ -32,6 +35,7 @@ function Jobs(props) {
     }
     fetchAllJobs();
   }, []);
+
 
   if (isLoading) return <h2>Loading</h2>;
   return (

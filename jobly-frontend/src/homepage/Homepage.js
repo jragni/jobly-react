@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
  */
 function Homepage() {
 
-  const currentUser = useContext(UserContext);
+  const {currentUser} = useContext(UserContext);
   function showUserNotLoggedInView() {
     return (
       <div className="btn-group ">

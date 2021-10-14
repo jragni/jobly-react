@@ -18,7 +18,7 @@ import "./Nav.css";
 
 function Nav({logout}) {
 
-  const currentUser = useContext(UserContext);
+  const {currentUser} = useContext(UserContext);
 
   /* Function that shows navbar features for users that are not lgogged in */
   function showLoggedOutView() {
@@ -61,9 +61,8 @@ function Nav({logout}) {
           </NavLink>
         </li>
 
-        {/* TODO: Add logout w/ template */}
         <li className="nav-item">
-          <NavLink onClick={logout} to="/logout" className="nav-link">
+          <NavLink onClick={logout} to="/" className="nav-link">
             Logout as {currentUser.username} 
           </NavLink>
         </li>

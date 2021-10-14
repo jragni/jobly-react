@@ -7,15 +7,15 @@ import JobCard from "./JobCard";
  *
  * Props:
  *      jobs {Array.object}: List of jobs
- *      submit: function to submit apply
+ *      apply: function to submit apply
  *
  * State:
- *       -No State
+ *       -currentPage: page for pagination
  *
- * {Jobs,CompanyDetails} -> JobList -> JobCard
+ * {Jobs, CompanyDetails} -> JobList -> JobCard
  */
 
-function JobsList({ jobs, search}) {
+function JobsList({ jobs}) {
   const [currentPage, setCurrentPage] = useState(0);
 
   /* PAGINATION for job cards */
@@ -34,7 +34,7 @@ function JobsList({ jobs, search}) {
   return (
     <div className="JobsList">
       {currentPageCards.map((job) => (
-        <JobCard key={job.id} job={job} search={search} />
+        <JobCard key={job.id} job={job} />
       ))}
       <div className='d-flex justify-content-center' > 
         <ReactPaginate

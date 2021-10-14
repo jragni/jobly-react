@@ -48,7 +48,7 @@ function App() {
     function getUserInfo() {
       async function fetchUserInfoByUsername(username) {
         let user = await JoblyApi.getUserInfo(username);
-        console.log(user);
+        console.log("fetched user:", user);
         setCurrentUser(user);
       }
       if (token) {
@@ -90,10 +90,16 @@ function App() {
     setCurrentUser(user);
   }
 
+  async function applyToJob(id) {
+    await JoblyApi.apply(currentUser.username, id);
+    console.log('applied to job: ', id);
+  }
+
+
   return (
     <div className="App">
       <BrowserRouter>
-        <UserContext.Provider value={currentUser}>
+        <UserContext.Provider value={{currentUser, applyToJob}}>
           <Nav logout={logout} />
           <Routes register={register} login={login} update={update} />
         </UserContext.Provider>
