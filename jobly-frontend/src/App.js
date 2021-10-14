@@ -22,13 +22,12 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [token, setToken] = useState(null);
 
-  // TODO: add localStorage in order to persist the log in. 
-
   /* logs user in by requesting a token upon succesful logon*/
   async function login(data) {
     console.debug("App.login", data);
     const token = await JoblyApi.login(data);
     JoblyApi.token = token;
+    localStorage.setItem("token", token);
     setToken(token);
     console.log("authentication successful");
   }
@@ -37,38 +36,51 @@ function App() {
   function logout() {
     JoblyApi.token = null;
     setCurrentUser(null);
+    localStorage.removeItem("token");
+    localStorage.removeItem("currentUser");
   }
 
   /** getUserInfo
-   * Effect that fetches the user's information upon token receipt from 
-   *  sign in or registration. 
+   * Effect that fetches the user's information upon token receipt from
+   *  sign in or registration.
    */
-  useEffect( function getUserInfo() {
-    async function fetchUserInfoByUsername(username) {
+  useEffect(
+    function getUserInfo() {
+      async function fetchUserInfoByUsername(username) {
         let user = await JoblyApi.getUserInfo(username);
         console.log(user);
         setCurrentUser(user);
-    }
+      }
       if (token) {
         let load = jwt.decode(token);
-        console.log("load: ",load);
+        console.log("load: ", load);
         fetchUserInfoByUsername(load.username);
       }
     },
     [token]
   );
 
+  useEffect(function fetchTokenOnMount() {
+    const storedToken = localStorage.getItem("token");
+    if (storedToken) {
+      console.log("tried to retrieve token and succeeded");
+      setToken(storedToken);
+      JoblyApi.token = storedToken;
+    }
+  }, []);
+
   /** register
    * A function that registers a new user.
-   * 
-   * @param data {object} : user information containing 
+   *
+   * @param data {object} : user information containing
    *                        {username, password, firstName, lastName, email}
    */
   async function register(data) {
-    const token = await JoblyApi.register(data);    
+    const token = await JoblyApi.register(data);
     JoblyApi.token = token;
-    console.log('Registration succesful!');
+    console.log("Registration succesful!");
     setToken(token);
+    localStorage.setItem("token", token);
   }
 
   /** Function that updates the current user's information */
@@ -76,14 +88,13 @@ function App() {
     console.debug("Update");
     const user = await JoblyApi.updateUserInfo(currentUser.username, data);
     setCurrentUser(user);
-    
   }
 
   return (
     <div className="App">
       <BrowserRouter>
         <UserContext.Provider value={currentUser}>
-          <Nav logout={logout}/>
+          <Nav logout={logout} />
           <Routes register={register} login={login} update={update} />
         </UserContext.Provider>
       </BrowserRouter>
