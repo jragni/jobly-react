@@ -1,9 +1,10 @@
 
 .Homepage {
+    background-repeat: no-repeat;
 }
 
 .btn {
-    margin:auto;
+    width: 5rem;
 }
 
 .jumbotron {

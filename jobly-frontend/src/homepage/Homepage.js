@@ -13,11 +13,11 @@ function Homepage() {
   const {currentUser} = useContext(UserContext);
   function showUserNotLoggedInView() {
     return (
-      <div className="btn-group ">
-        <Link className="btn btn-primary mx-2" to="/signup">
+      <div className="mx-auto d-flex justify-content-center">
+        <Link className="btn btn-primary m-1 p-2" to="/signup">
           Sign Up
         </Link>
-        <Link className="btn btn-danger mx-2" to="/login">
+        <Link className="btn btn-danger m-1 p-2" to="/login">
           Log In
         </Link>
       </div>
@@ -35,7 +35,7 @@ function Homepage() {
   // TODO: add a better intro landing page
   return (
     <div className="Homepage">
-      <main className="jumbotron mx-auto bg-secondary p-5 w-50">
+      <main className="jumbotron mx-auto bg-secondary p-5 w-75">
         <h1>
           <strong>Jobly</strong>
         </h1>

@@ -31,21 +31,23 @@ function JobsList({ jobs}) {
     window.scrollTo(0, 0);
   }
   /*END pagination */
+
   return (
     <div className="JobsList">
       {currentPageCards.map((job) => (
         <JobCard key={job.id} job={job} />
       ))}
-      <div className='d-flex justify-content-center' > 
+      <div className="d-flex justify-content-center">
         <ReactPaginate
+          className="mx-auto"
           forcePage={currentPage}
           previousLabel={"<"}
           nextLabel={">"}
           breakLabel={"..."}
           breakClassName={"break-me"}
           pageCount={pageCount}
-          marginPagesDisplayed={2}
-          pageRangeDisplayed={10}
+          marginPagesDisplayed={1}
+          pageRangeDisplayed={4}
           onPageChange={handlePageClick}
           containerClassName={"pagination pagination-md"}
           activeClassName={"page-item active"}

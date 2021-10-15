@@ -53,15 +53,15 @@ function SignupForm({ register }) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="SignupForm container w-50"
+      className="SignupForm container w-75"
       method="post"
     >
       
       <div className="card form-group my-5 mb-3 bg-secondary">
         <h4 className="card-header text-start">Sign Up</h4>
-        <div className="card-body">
+        <div className="card-body d-block">
 
-          <div className="form-floating w-50 mx-auto my-2">
+          <div className="form-floating mx-auto my-2 mb-3">
             <input
               className="form-control"
               type="text"
@@ -75,7 +75,7 @@ function SignupForm({ register }) {
             <label htmlFor="username-form-input">username</label>
           </div>
 
-          <div className="form-floating w-50 mx-auto my-2">
+          <div className="form-floating mx-auto my-2">
             <input
               className="form-control "
               type="password"
@@ -89,7 +89,7 @@ function SignupForm({ register }) {
             <label htmlFor="password-form-input">password</label>
           </div>
 
-          <div className="form-floating w-50 mx-auto my-2">
+          <div className="form-floating mx-auto my-2">
             <input
               className="form-control"
               type="text"
@@ -103,7 +103,7 @@ function SignupForm({ register }) {
             <label htmlFor="firstname-form-input">first name</label>
           </div>
 
-          <div className="form-floating w-50 mx-auto my-2">
+          <div className="form-floating mx-auto my-2">
             <input
               className="form-control"
               type="text"
@@ -117,7 +117,7 @@ function SignupForm({ register }) {
             <label htmlFor="lastname-form-input">last name</label>
           </div>
 
-          <div className="form-floating w-50 mx-auto my-2">
+          <div className="form-floating mx-auto my-2">
             <input
               className="form-control"
               type="email"

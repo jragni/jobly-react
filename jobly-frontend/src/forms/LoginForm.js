@@ -41,13 +41,13 @@ function LoginForm({ submit }) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="LoginForm container w-50"
+      className="LoginForm container w-75"
       method="post"
     >
       <div className="card form-group my-5 mb-3 bg-secondary">
         <h4 className="card-header text-start">Login</h4>
-        <div className="card-body">
-          <div className="form-floating mx-auto my-2 w-50">
+        <div className="card-body d-block">
+          <div className="form-floating mx-auto my-2">
             <input
               className="form-control"
               type="text"
@@ -61,7 +61,7 @@ function LoginForm({ submit }) {
             <label htmlFor="username-form-input">username</label>
           </div>
 
-          <div className="form-floating mx-auto my-2 w-50">
+          <div className="form-floating mx-auto my-2">
             <input
               className="form-control"
               type="password"
@@ -78,9 +78,11 @@ function LoginForm({ submit }) {
           {formErrors.length ? (
             <Alert type="danger" messages={formErrors} />
           ) : null}
-          <button className="btn btn-primary me-2 mb-3" type="submit">
+
+          <button className="btn btn-primary" type="submit">
             login
           </button>
+
           <p className="my-2 text-muted">
             {" "}
             Not yet a user?{" "}

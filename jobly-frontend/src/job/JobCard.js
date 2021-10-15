@@ -17,7 +17,6 @@ function JobCard({ job }) {
   const { currentUser, applyToJob } = useContext(UserContext);
   const [application, setApplication] = useState(currentUser.applications);
 
-  /** TODO: add a way to click on button and not refresh page */
   async function apply(e) {
     e.preventDefault();
     if (application.includes(id)) return;

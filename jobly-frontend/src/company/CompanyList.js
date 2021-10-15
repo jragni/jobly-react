@@ -24,6 +24,7 @@ function CompanyList({ companies }) {
   const offset = currentPage * cardsPerPage;
   const currentPageCards = companies.slice(offset, offset + cardsPerPage);
 
+  /** Function that handles page change for pagination use */
   function handlePageClick({ selected: selectedPage }) {
     setCurrentPage(selectedPage);
     window.scrollTo(0, 0);

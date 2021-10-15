@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import SearchForm from "../forms/SearchForm";
 import JobsList from "../job/JobsList";
 import JoblyApi from "../api/api";
@@ -6,23 +6,29 @@ import JoblyApi from "../api/api";
 /** Jobs
  * Component for rendering the Jobs page.
  *
- * 
+ *
  * Props:
  *
  * State:
  *  - isLoading: a boolean to check if promises have been fulfilled.
  *  - jobs: a list of jobs with {title, description, salary, equity}
- * 
+ *
  * Routes -> Jobs -> JobsList
  */
 function Jobs(props) {
   const [isLoading, setIsLoading] = useState(true);
-  const [jobs, setJobs] = useState([]);
+  const [jobs, setJobs] = useState(null);
+  const [lastSearch, setLastSearch] = useState("");
 
   /** Handles searching for job by title. Does not have to be exact match */
   async function search(title) {
-    const res = await JoblyApi.getJobs(title);
-    setJobs(res);
+    try {
+      const res = await JoblyApi.getJobs(title);
+      setLastSearch(title);
+      setJobs(res);
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   useEffect(function fetchAllJobsOnMount() {
@@ -35,11 +41,10 @@ function Jobs(props) {
     fetchAllJobs();
   }, []);
 
-
   if (isLoading) return <h2>Loading</h2>;
   return (
     <div className="Jobs">
-      <SearchForm search={search} />
+      <SearchForm search={search} lastSearch={lastSearch} />
       <JobsList jobs={jobs} />
     </div>
   );

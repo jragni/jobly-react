@@ -18,6 +18,7 @@ import UserContext from "./context/UserContext";
  *
  * Index -> App -> {Nav, Routes}
  */
+
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [token, setToken] = useState(null);
@@ -100,7 +101,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <UserContext.Provider value={{currentUser, applyToJob, }}>
+        <UserContext.Provider value={{currentUser, applyToJob}}>
           <Nav logout={logout} />
           <Routes register={register} login={login} update={update} />
         </UserContext.Provider>

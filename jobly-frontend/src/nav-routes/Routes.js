@@ -31,10 +31,37 @@ import UserContext from "../context/UserContext";
 function Routes(props) {
   const {currentUser} = useContext(UserContext);
 
+  /* Function that limits the unlogged in users view */
+  function showNotLoggedInRoutes() {
+
+    return(
+    <Switch>
+      <Route exact path="/">
+        <Homepage />
+      </Route>
+
+      <Route exact path="/signup">
+        <SignupForm register={props.register} />
+      </Route>
+
+      <Route exact path="/login">
+        <LoginForm submit={props.login} />
+      </Route>
+
+      <Redirect to="/"/>
+
+    </Switch>
+    );
+  }
   /* Function that gives access to routes for logged in users */
   function showLoggedInRoutes() {
     return (
-      <div className="isLoggedIn">
+      <Switch className="isLoggedIn">
+
+        <Route exact path="/">
+          <Homepage />
+        </Route>
+
         <Route exact path="/companies">
           <Companies />
         </Route>
@@ -51,27 +78,13 @@ function Routes(props) {
           <EditProfileForm update={props.update}/>
         </Route>
         
-      </div>
+        <Redirect to="/"/>
+        
+      </Switch>
     );
   }
 
-  return (
-    <Switch>
-      <Route exact path="/">
-        <Homepage />
-      </Route>
-
-      <Route exact path="/signup">
-        <SignupForm register={props.register} />
-      </Route>
-
-      <Route exact path="/login">
-        <LoginForm submit={props.login} />
-      </Route>
-
-      {!currentUser ? <Redirect to="/" /> : showLoggedInRoutes()}
-    </Switch>
-  );
+  return (currentUser ? showLoggedInRoutes() : showNotLoggedInRoutes());
 }
 
 export default Routes;
