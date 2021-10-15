@@ -70,7 +70,6 @@ function Nav({logout}) {
     );
   }
 
-  // TODO: work on navbar functionality
   return (
     <nav className="Nav navbar navbar-expand-lg navbar-dark bg-primary">
       <div className="container-fluid">

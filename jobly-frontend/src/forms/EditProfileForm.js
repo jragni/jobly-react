@@ -52,13 +52,14 @@ function EditProfileForm({ update }) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="EditUserForm container w-50"
+      className="EditUserForm container w-75"
       method="patch"
     >
-      <div className="card form-group my-5 mb-3 bg-secondary">
+      <div className="card form-group mx-auto my-5 mb-3 bg-secondary">
         <h4 className="card-header text-start">Edit Profile </h4>
-        <div className="card-body">
-          <div className="form-floating w-50 mx-auto my-2">
+        <div className="card-body d-block">
+
+          <div className="form-floating mx-auto my-2">
             <input
               className="form-control"
               type="text"
@@ -72,7 +73,7 @@ function EditProfileForm({ update }) {
             <label htmlFor="username-form-input">username</label>
           </div>
 
-          <div className="form-floating w-50 mx-auto my-2">
+          <div className="form-floating mx-auto my-2">
             <input
               className="form-control "
               type="password"
@@ -85,7 +86,7 @@ function EditProfileForm({ update }) {
             <label htmlFor="password-form-input">new password</label>
           </div>
 
-          <div className="form-floating w-50 mx-auto my-2">
+          <div className="form-floating mx-auto my-2">
             <input
               className="form-control"
               type="text"
@@ -98,7 +99,7 @@ function EditProfileForm({ update }) {
             <label htmlFor="firstname-form-input">first name</label>
           </div>
 
-          <div className="form-floating w-50 mx-auto my-2">
+          <div className="form-floating mx-auto my-2">
             <input
               className="form-control"
               type="text"
@@ -111,7 +112,7 @@ function EditProfileForm({ update }) {
             <label htmlFor="lastname-form-input">last name</label>
           </div>
 
-          <div className="form-floating w-50 mx-auto my-2">
+          <div className="form-floating mx-auto my-2">
             <input
               className="form-control"
               type="email"

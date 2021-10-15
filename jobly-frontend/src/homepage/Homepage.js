@@ -32,7 +32,6 @@ function Homepage() {
     );
   }
 
-  // TODO: add a better intro landing page
   return (
     <div className="Homepage">
       <main className="jumbotron mx-auto bg-secondary p-5 w-75">

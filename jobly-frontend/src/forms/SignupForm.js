@@ -57,7 +57,7 @@ function SignupForm({ register }) {
       method="post"
     >
       
-      <div className="card form-group my-5 mb-3 bg-secondary">
+      <div className="card form-group mx-auto my-5 mb-3 bg-secondary">
         <h4 className="card-header text-start">Sign Up</h4>
         <div className="card-body d-block">
 

@@ -31,6 +31,7 @@ import UserContext from "../context/UserContext";
 function Routes(props) {
   const {currentUser} = useContext(UserContext);
 
+  // TODO: add a better routing pattern
   /* Function that limits the unlogged in users view */
   function showNotLoggedInRoutes() {
 

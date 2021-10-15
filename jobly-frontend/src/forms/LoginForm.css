@@ -5,3 +5,7 @@
 .btn {
     width: auto;
 }
+
+.card { 
+    max-width: 45rem;
+}

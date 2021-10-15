@@ -1,3 +1,7 @@
 .link {
     text-decoration: none;
 }
+
+.card {
+    max-width: 45rem;
+}

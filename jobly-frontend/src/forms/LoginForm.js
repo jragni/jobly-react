@@ -44,9 +44,10 @@ function LoginForm({ submit }) {
       className="LoginForm container w-75"
       method="post"
     >
-      <div className="card form-group my-5 mb-3 bg-secondary">
+      <div className="card form-group mx-auto my-5 mb-3 bg-secondary">
         <h4 className="card-header text-start">Login</h4>
         <div className="card-body d-block">
+
           <div className="form-floating mx-auto my-2">
             <input
               className="form-control"
