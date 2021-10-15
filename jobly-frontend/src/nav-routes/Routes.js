@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React  from "react";
 import Homepage from "../homepage/Homepage";
 import Companies from "../company/Companies";
 import CompanyDetail from "../company/CompanyDetail";
@@ -7,7 +7,7 @@ import EditProfileForm from "../forms/EditProfileForm";
 import SignupForm from "../forms/SignupForm";
 import LoginForm from "../forms/LoginForm";
 import { Route, Switch, Redirect } from "react-router-dom";
-import UserContext from "../context/UserContext";
+import PrivateRoute from "./PrivateRoute"
 
 /** Routes
  *  Routes for the app
@@ -29,17 +29,10 @@ import UserContext from "../context/UserContext";
  */
 
 function Routes(props) {
-  const {currentUser} = useContext(UserContext);
 
-  // TODO: add a better routing pattern
-  /* Function that limits the unlogged in users view */
-  function showNotLoggedInRoutes() {
+  return (
 
-    return(
     <Switch>
-      <Route exact path="/">
-        <Homepage />
-      </Route>
 
       <Route exact path="/signup">
         <SignupForm register={props.register} />
@@ -49,43 +42,30 @@ function Routes(props) {
         <LoginForm submit={props.login} />
       </Route>
 
+      <PrivateRoute exact path="/companies">
+        <Companies />
+      </PrivateRoute>
+
+      <PrivateRoute exact path="/companies/:handle">
+        <CompanyDetail />
+      </PrivateRoute>
+
+      <PrivateRoute exact path="/jobs">
+        <Jobs />
+      </PrivateRoute>
+
+      <PrivateRoute exact path="/profile">
+        <EditProfileForm update={props.update}/>
+      </PrivateRoute>
+
+      <Route to="/" >
+        <Homepage />
+      </Route>
+
       <Redirect to="/"/>
 
     </Switch>
-    );
-  }
-  /* Function that gives access to routes for logged in users */
-  function showLoggedInRoutes() {
-    return (
-      <Switch className="isLoggedIn">
-
-        <Route exact path="/">
-          <Homepage />
-        </Route>
-
-        <Route exact path="/companies">
-          <Companies />
-        </Route>
-
-        <Route exact path="/companies/:handle">
-          <CompanyDetail />
-        </Route>
-
-        <Route exact path="/jobs">
-          <Jobs />
-        </Route>
-
-        <Route exact path="/profile">
-          <EditProfileForm update={props.update}/>
-        </Route>
-        
-        <Redirect to="/"/>
-        
-      </Switch>
-    );
-  }
-
-  return (currentUser ? showLoggedInRoutes() : showNotLoggedInRoutes());
+  );
 }
 
 export default Routes;
